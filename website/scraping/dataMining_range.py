@@ -4,53 +4,96 @@ import xlwt
 
 def main():
 # 打开表格进行数据清洗
-    data=xlrd.open_workbook("data/English/English0.xls")
+    data=xlrd.open_workbook("data/English/English10.xls")
     table=data.sheets()[0]
     nrows=table.nrows
     ncols=table.ncols
     dataList=[]
-    brand = []
     for i in range(1,nrows):
         rowValues=table.row_values(i)
         data = []
         for j in range(len(rowValues)):
             if j==1: # Phone_price
-                print(rowValues[j])
                 if rowValues[j]!='':
-                    # rowValues[j] = int(rowValues[j].split('￥')[1])
-                    rowValues[j] = int(rowValues[j].split('￥')[1])
-
-                    # if 0 <= rowValues[j] < 2000:
-                    #     rowValues[j] = "0~2000￥"
-                    # elif 2000 <= str < 4000:
-                    #     rowValues[j] = "2000~4000￥"
-                    # elif 4000 <= str < 6000:
-                    #     rowValues[j] = "4000~6000￥"
-                    # elif 6000 <= str < 8000:
-                    #     rowValues[j] = "6000~8000￥"
-                    # elif 8000 <= str < 10000:
-                    #     rowValues[j] = "8000~10000￥"
-                    # elif 10000 <= str:
-                    #     rowValues[j] = "more than 10000￥"
-                    # print(rowValues[j])
+                    try:
+                        rowValues[j] = float(rowValues[j].split('￥')[1])
+                    except:
+                        print('hahha')
+                        print(i)
+            elif j==2: #Phone_factory_system_kernel
+                if rowValues[j] != '':
+                    rowValues[j] = rowValues[j].split(' ')[0]
             elif j==3: #Phone_screen_size
-                pass
-            elif j==5: #Phone_resolution
-                pass
+                if rowValues[j] != '':
+                    rowValues[j] = float(rowValues[j].split(' ')[0])
+            elif j==4: #Phone_OS
+                if rowValues[j] != '':
+                    rowValues[j] = rowValues[j].split(' ')[0]
+            elif j==6: #Phone_frequency
+                rowValues[j] = rowValues[j].replace('A55 ', '').replace('A77 ', '').replace('Based ', '').replace('×', 'x').replace(
+                    'Cortex-', '').replace('Cortex ','')
+                if 'x' in rowValues[j]:
+                    isX = True
+                else:
+                    isX = False
+                rowValues[j] = rowValues[j].split("+")
+                cpus = []
+                nums = []
+                sumGhz = 0.0
+                sum = 0
+                try:
+                    if len(rowValues[j]) > 1:
+                        if not isX:
+                            for str in rowValues[j]:
+                                str = str.split("*")
+                                cpus.append(float(str[0].split("G")[0]))
+                                nums.append(int(str[1]))
+                            for i in range(len(cpus)):
+                                sumGhz = sumGhz + cpus[i] * nums[i]
+                                sum = sum + nums[i]
+                            averageCpu = round(sumGhz / sum, 2)
+                        elif isX:
+                            for str in rowValues[j]:
+                                pattern = re.compile(r'A.* ')
+                                str = re.sub(pattern, '', str)
+                                str = str.split("x")
+                                cpus.append(float(str[1].split("G")[0]))
+                                nums.append(int(str[0]))
+                            for i in range(len(cpus)):
+                                sumGhz = sumGhz + cpus[i] * nums[i]
+                                sum = sum + nums[i]
+                            averageCpu = round(sumGhz / sum, 2)
+                        rowValues[j] = averageCpu
+                    else:
+                        rowValues[j] = float(rowValues[j][0].split("G")[0])
+                    print(averageCpu)
+                except:
+                    print(i)
+                    print(rowValues[j])
             elif j==7: #Phone_kernel_num
-                pass
+                if "four" in rowValues[j]:
+                    rowValues[j] = 4
+                elif "six" in rowValues[j]:
+                    rowValues[j] = 6
+                elif "eight" in rowValues[j]:
+                    rowValues[j] = 8
             elif j==8: #Phone_RAM_capacity
-                pass
+                if rowValues[j] != '':
+                    rowValues[j] = rowValues[j].split('/')[0]
+                    rowValues[j] = float(rowValues[j].replace('GB',''))
             elif j==9: #Phone_ROM_capacity
-                pass
+                if rowValues[j] != '':
+                    rowValues[j] = rowValues[j].split('/')[0]
+                    rowValues[j] = float(rowValues[j].replace('GB',''))
             elif j==10: #Phone_battery_capacity
-                pass
+                if rowValues[j] != '':
+                    rowValues[j] = float(rowValues[j].replace('mAh',''))
             elif j==11: #Phone_rear_camera
-                pass
+                if rowValues[j] != '':
+                    rowValues[j] = float(rowValues[j].split(' ')[0])
             elif j==12: #Phone_front_camera
-                pass
-            elif j==14: #Phone_brand
-                pass
+                if rowValues[j] != '':
+                    rowValues[j] = float(rowValues[j].split(' ')[0])
             data.append(rowValues[j])
         # print(data)
         dataList.append(data)
@@ -73,7 +116,7 @@ def main():
                 print(col[j] + "message access failed")
             else:
                 sheet.write(i + 1, j, temp)
-    book.save("./data/FinalData/Data0.xls")
+    book.save("./data/FinalData/Data10.xls")
 
 if __name__ == '__main__':
     main()

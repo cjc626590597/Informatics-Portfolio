@@ -4,7 +4,7 @@ import xlwt
 
 def main():
 # 打开表格进行数据清洗
-    data=xlrd.open_workbook("data/Chinese/asd0.xls")
+    data=xlrd.open_workbook("data/Chinese/asd10.xls")
     table=data.sheets()[0]
     nrows=table.nrows
     ncols=table.ncols
@@ -37,6 +37,8 @@ def main():
                 pattern = re.compile(r'清.*$')
                 rowValues[j] = re.sub(pattern, '清', rowValues[j])
                 rowValues[j] = rowValues[j].replace('高清', '').replace('超清', '').replace('普清', '')
+            elif j==6: #Phone_frequency
+                rowValues[j] = rowValues[j].replace('（大四核）','*4').replace('（小四核）','*4').replace('（大两核）','*2').replace('（大双核）','*2').replace('（小六核）','*6').replace('+微智核i7','').replace('+微智核i6','').replace('，','+')
             elif j==7: #Phone_kernel_num
                 rowValues[j] = rowValues[j].replace('八核','eight-core').replace('六核','six-core').replace('四核','four-core')
             elif j==8: #Phone_RAM_capacity
@@ -80,7 +82,7 @@ def main():
             else:
                 sheet.write(i + 1, j, temp)
         sheet.write(i + 1, 14, brand[i])
-    book.save("./data/English/English0.xls")
+    book.save("./data/English/English10.xls")
 
 if __name__ == '__main__':
     main()
