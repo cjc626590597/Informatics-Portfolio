@@ -3,8 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="Stylesheets/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>index</h1>
+    <form class="form-container" method="POST" action="/">
+		<div>
+			{{form.price.label}}
+			{{form.price}}
+		</div><br>
+		<div>
+			{{form.factory_system.label}}
+			{{form.factory_system}}
+		</div><br>
+		<div>
+			{{form.phone_screen.label}}
+			{{form.phone_screen}}
+		</div><br>
+		<div>
+			{{form.phone_OS.label}}
+			{{form.phone_OS}}
+		</div><br>
+		<div>
+			{{form.phone_resolution.label}}
+			{{form.phone_resolution}}
+		</div><br>
+		<div>
+			{{form.phone_frequency.label}}
+			{{form.phone_frequency}}
+		</div><br>
+		<div>
+			{{form.phone_kernel_num.label}}
+			{{form.phone_kernel_num}}
+		</div><br>
+		<div>
+			{{form.phone_RAM_capacity.label}}
+			{{form.phone_RAM_capacity}}
+		</div><br>
+		<div>
+			{{form.phone_ROM_capacity.label}}
+			{{form.phone_ROM_capacity}}
+		</div><br>
+		<div>
+			{{form.phone_battery_capacity.label}}
+			{{form.phone_battery_capacity}}
+		</div><br>
+		<div>
+			{{form.phone_rear_camera.label}}
+			{{form.phone_rear_camera}}
+		</div><br>
+		<div>
+			{{form.phone_front_camera.label}}
+			{{form.phone_front_camera}}
+		</div><br>
+		<div>
+			{{form.submit}}
+		</div>
+
+	</form>
 </body>
 </html>

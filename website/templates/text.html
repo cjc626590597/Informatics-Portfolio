@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div id="demo"></div>
+</head>
+<body>
+    <script type="text/javascript">
+            var x=document.getElementById("demo");
+            getLocation();
+            function getLocation()
+            {
+              if (navigator.geolocation)
+                {
+                navigator.geolocation.getCurrentPosition(showPosition);
+                }
+              else{x.innerHTML="Geolocation is not supported by this browser.";}
+            }
+            function showPosition(position)
+            {
+                var lng = position.coords.longitude;
+                var lat = position.coords.latitude;
+                var site = lat.toFixed(6)+','+lng.toFixed(6);
+                console.log(site)
+                document.getElementById("demo").innerHTML = site;
+            }
+
+
+    </script>
+</body>
+</html>

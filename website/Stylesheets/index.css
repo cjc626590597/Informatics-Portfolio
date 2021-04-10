@@ -1,0 +1,14 @@
+form.form-container{
+    background-color:#d3d3d3
+}
+div{
+    background-color:#d3d3d3
+}
+div input{
+    width: 100px;
+    text-align: center;
+    padding: 8px 0px;
+    border: none;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+}
