@@ -1,4 +1,5 @@
 from math import log
+import pandas as pd
 
 
 class TreeNode():
@@ -22,15 +23,25 @@ def retrieveTrainingData():
     [1]List: features used to classify
     """
     # TODO change this static dataSet to getting data from database
-    dataSet = [[166, 'Short', 'Rough', 'Female'],
-               [170, 'Long', 'Thin', 'Male'],
-               [169, 'Long', 'Rough', 'Female'],
-               [180, 'Short', 'Rough', 'Male'],
-               [177, 'Short', 'Rough', 'Male'],
-               [172, 'Long', 'Rough', 'Female'],
-               [167, 'Long', 'Thin', 'Female'],
-               [165, 'Short', 'Thin', 'Female']]
-    features = ['Height', 'Hair', 'Voice']
+    # dataSet = [[166, 'Short', 'Rough', 'Female'],
+    #            [170, 'Long', 'Thin', 'Male'],
+    #            [169, 'Long', 'Rough', 'Female'],
+    #            [180, 'Short', 'Rough', 'Male'],
+    #            [177, 'Short', 'Rough', 'Male'],
+    #            [172, 'Long', 'Rough', 'Female'],
+    #            [167, 'Long', 'Thin', 'Female'],
+    #            [165, 'Short', 'Thin', 'Female']]
+    # features = ['Height', 'Hair', 'Voice']
+    file = r'./data/Data0.xls'
+    data = pd.read_excel(file, sheet_name=0)
+    data.drop(data.columns[[0, -3]], axis=1, inplace=True)
+    data.fillna('', inplace=True)
+    features = list(data)
+    features.pop(-1)
+    data = data.values.tolist()
+    dataSet = []
+    for item in data:
+        dataSet.append(item)
     return dataSet, features
 
 
@@ -180,7 +191,6 @@ def calculateGainRatioForContinuousDataSet(baseDataSet, dataSet, empiricalEntrop
     return gainRatio, 0, 0
 
 
-
 def calculateOptimalFeature(baseDataSet, dataSet, features):
     """
     Calculate optimal feature for classification
@@ -314,6 +324,8 @@ def predict(root, x, features):
     if root.node_val is not None:
         return root.node_val
 
+    if root.feature_name is None:
+        return None
     index = features.index(root.feature_name)
     xValue = x[index]
     for key, node in root.child.items():
@@ -355,5 +367,28 @@ def traverseTree(root):
 if __name__ == '__main__':
     _dataSet, _features = retrieveTrainingData()
     _root = createDecisionTree(_dataSet, _dataSet, _features)
-    traverseTree(_root)
-    print(predict(_root, [174.5, 'Short', 'Rough'], _features))
+    #traverseTree(_root)
+    file = r'./data/Data1.xls'
+    data = pd.read_excel(file, sheet_name=0)
+    correctResult = []
+    tmp = data.values.tolist()
+    for item in tmp:
+        correctResult.append(item[-1])
+    print(correctResult)
+    data.drop(data.columns[[0, -3, -1]], axis=1, inplace=True)
+    data.fillna('', inplace=True)
+    data = data.values.tolist()
+    total = 0
+    correct = 0.0
+    i = 0
+    for item in data:
+        result = predict(_root, item, _features)
+        print(result)
+        if result == correctResult[i]:
+            correct += 1
+        if result is not None:
+            total += 1
+        i += 1
+    print(100 * correct/total)
+
+
