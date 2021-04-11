@@ -7,11 +7,12 @@ from website.forms import IndexForm
 @app.route('/index',methods=['GET','POST'])
 def index():
     form = IndexForm()
-    if(form.validate_on_submit()):
-        return render_template('result.html',form=form)
+    if (form.validate_on_submit()):
+        redirect(url_for("result"))
     return render_template('index.html',form=form)
 
-@app.route('/result')
+
+@app.route('/result',methods=['GET','POST'])
 def result():
     return render_template('result.html')
 
