@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="informatics" uuid="85848241-2fad-45a3-ab3b-640215f6a9d8">
+    <data-source name="c2096406_informatic" uuid="a4ad0515-624f-4384-968a-9320086fffc7">
       <database-info product="MySQL" version="5.5.5-10.3.23-MariaDB" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.21 (Revision: 33f65445a1bcc544eb0120491926484da168f199)" dbms="MARIADB" exact-version="10.3.23" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
-      <user-name>c2097255</user-name>
+      <user-name>c2096406</user-name>
       <schema-mapping>
         <introspection-scope>
           <node kind="schema" qname="@" />
