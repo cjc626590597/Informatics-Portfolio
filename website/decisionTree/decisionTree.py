@@ -22,17 +22,7 @@ def retrieveTrainingData():
     [0]List: data used to train (dataSet[-1] is label)
     [1]List: features used to classify
     """
-    # TODO change this static dataSet to getting data from database
-    # dataSet = [[166, 'Short', 'Rough', 'Female'],
-    #            [170, 'Long', 'Thin', 'Male'],
-    #            [169, 'Long', 'Rough', 'Female'],
-    #            [180, 'Short', 'Rough', 'Male'],
-    #            [177, 'Short', 'Rough', 'Male'],
-    #            [172, 'Long', 'Rough', 'Female'],
-    #            [167, 'Long', 'Thin', 'Female'],
-    #            [165, 'Short', 'Thin', 'Female']]
-    # features = ['Height', 'Hair', 'Voice']
-    file = r'./data/Data0.xls'
+    file = r'data/trainingData.xls'
     data = pd.read_excel(file, sheet_name=0)
     data.drop(data.columns[[0, -3]], axis=1, inplace=True)
     data.fillna('', inplace=True)
@@ -138,10 +128,12 @@ def getSubContinuousDataSet(dataSet, index, value, direction):
     return subDataSet
 
 
-def calculateGainRatioForDiscreteDataSet(baseDataSet, dataSet, empiricalEntropy, featureValues, index):
+def calculateGainRatioForDiscreteDataSet(dataSet, empiricalEntropy, featureValues, index):
     featureValuesSet = set(featureValues)
     gainRatio = 0.0
+    # entropy = Sigma[ featuresLength/totalLength * log2(featuresLength/totalLength) ]
     entropy = 0.0
+    # empiricalConditionalEntropy = Sigma[featuresLength/totalLength * Sigma[labelLength/featuresLength * log2(labelLength/featuresLength)] ]
     empiricalConditionalEntropy = 0.0
     # calculate gainRatio
     for value in featureValuesSet:
@@ -150,10 +142,9 @@ def calculateGainRatioForDiscreteDataSet(baseDataSet, dataSet, empiricalEntropy,
         for entry in dataSet:
             if entry[index] == value:
                 subDataSet.append(entry)
-        # TODO check formula
-        p = float(len(subDataSet)) / len(baseDataSet)
+        # this is used to calculate entropy
+        p = float(len(subDataSet)) / len(dataSet)
         # all are the same value
-        # TODO check this
         if p == 1.0:
             optimalFeatureIndex = index
             optimalFeatureValue = value
@@ -167,23 +158,24 @@ def calculateGainRatioForDiscreteDataSet(baseDataSet, dataSet, empiricalEntropy,
     return gainRatio, 0, 0
 
 
-def calculateGainRatioForContinuousDataSet(baseDataSet, dataSet, empiricalEntropy, value, index):
+def calculateGainRatioForContinuousDataSet(dataSet, empiricalEntropy, value, index):
+    # empiricalConditionalEntropy = Sigma[featuresLength/totalLength * Sigma[labelLength/featuresLength * log2(labelLength/featuresLength)] ]
     empiricalConditionalEntropy = 0.0
     gainRatio = 0.0
+    # entropy = Sigma[ featuresLength/totalLength * log2(featuresLength/totalLength) ]
     entropy = 0.0
     rightDataSet = getSubContinuousDataSet(dataSet, index, value, True)
     # if all values in this feature are same
-    # TODO check this
     if len(rightDataSet) == 0:
         optimalFeatureIndex = index
         optimalFeatureValue = value
         return +float('inf'), optimalFeatureIndex, optimalFeatureValue
     leftDataSet = getSubContinuousDataSet(dataSet, index, value, False)
-    # TODO check formula
-    p0 = float(len(rightDataSet)) / len(baseDataSet)
+    # this is used to calculate entropy
+    p0 = float(len(rightDataSet)) / len(dataSet)
     empiricalConditionalEntropy += p0 * calculateEntropy(rightDataSet)
-    # TODO check formula
-    p1 = float(len(leftDataSet)) / len(baseDataSet)
+    # this is used to calculate entropy
+    p1 = float(len(leftDataSet)) / len(dataSet)
     empiricalConditionalEntropy += p1 * calculateEntropy(leftDataSet)
     entropy -= p0 * log(p0, 2)
     entropy -= p1 * log(p1, 2)
@@ -191,7 +183,7 @@ def calculateGainRatioForContinuousDataSet(baseDataSet, dataSet, empiricalEntrop
     return gainRatio, 0, 0
 
 
-def calculateOptimalFeature(baseDataSet, dataSet, features):
+def calculateOptimalFeature(dataSet, features):
     """
     Calculate optimal feature for classification
     :param dataSet: dataset used to calculate entropy to get optimal feature
@@ -213,7 +205,7 @@ def calculateOptimalFeature(baseDataSet, dataSet, features):
         featureValues = [entry[i] for entry in dataSet]
         # if feature is string
         if type(featureValues[0]) == str:
-            data = calculateGainRatioForDiscreteDataSet(baseDataSet, dataSet, empiricalEntropy, featureValues, i)
+            data = calculateGainRatioForDiscreteDataSet(dataSet, empiricalEntropy, featureValues, i)
             gainRatio = data[0]
             # possibility is 1.0
             if gainRatio == +float('inf'):
@@ -230,7 +222,7 @@ def calculateOptimalFeature(baseDataSet, dataSet, features):
                 values.append((sortedValues[j] + sortedValues[j + 1]) / 2.0)
             for j in range(len(values)):
                 # every value has one gainRatio
-                data = calculateGainRatioForContinuousDataSet(baseDataSet, dataSet, empiricalEntropy, values[j], i)
+                data = calculateGainRatioForContinuousDataSet(dataSet, empiricalEntropy, values[j], i)
                 gainRatio = data[0]
                 # possibility is 1.0
                 if gainRatio == +float('inf'):
@@ -261,7 +253,7 @@ def getSubFeatures(index, features):
     return subFeatures
 
 
-def createDecisionTree(baseDataSet, dataSet, features):
+def createDecisionTree(dataSet, features):
     """
     create decisionTree according to C4.5 algorithm
     :param baseDataSet: whole dataset
@@ -279,7 +271,7 @@ def createDecisionTree(baseDataSet, dataSet, features):
     if len(dataSet[0]) == 1:
         return mostPossibleLabel(dataSet)
     # calculate best feature
-    optimalFeatureIndex, optimalFeatureValue = calculateOptimalFeature(baseDataSet, dataSet, features)
+    optimalFeatureIndex, optimalFeatureValue = calculateOptimalFeature(dataSet, features)
     # create classification node if it is not leaf
     node = TreeNode(feature_name=features[optimalFeatureIndex])
     # processed features
@@ -292,7 +284,7 @@ def createDecisionTree(baseDataSet, dataSet, features):
         children = dict()
         for value in ValuesSet:
             subDataSet = getSubDiscreteDataSet(dataSet, optimalFeatureIndex, value)
-            children[value] = createDecisionTree(baseDataSet, subDataSet, subFeatures)
+            children[value] = createDecisionTree(subDataSet, subFeatures)
         node.child = children
     # if feature is number
     else:
@@ -302,8 +294,8 @@ def createDecisionTree(baseDataSet, dataSet, features):
         leftDataSet = getSubContinuousDataSet(dataSet, optimalFeatureIndex, value, False)
         # use dict to store children for this node to go to next feature
         children = dict()
-        children['>' + str(value)] = createDecisionTree(baseDataSet, rightDataSet, subFeatures)
-        children['<=' + str(value)] = createDecisionTree(baseDataSet, leftDataSet, subFeatures)
+        children['>' + str(value)] = createDecisionTree(rightDataSet, subFeatures)
+        children['<=' + str(value)] = createDecisionTree(leftDataSet, subFeatures)
         node.child = children
     return node
 
@@ -366,9 +358,9 @@ def traverseTree(root):
 
 if __name__ == '__main__':
     _dataSet, _features = retrieveTrainingData()
-    _root = createDecisionTree(_dataSet, _dataSet, _features)
+    _root = createDecisionTree(_dataSet, _features)
     #traverseTree(_root)
-    file = r'./data/Data1.xls'
+    file = r'data/testData.xls'
     data = pd.read_excel(file, sheet_name=0)
     correctResult = []
     tmp = data.values.tolist()
@@ -378,7 +370,7 @@ if __name__ == '__main__':
     data.drop(data.columns[[0, -3, -1]], axis=1, inplace=True)
     data.fillna('', inplace=True)
     data = data.values.tolist()
-    total = 0
+    total = len(data)
     correct = 0.0
     i = 0
     for item in data:
@@ -386,9 +378,5 @@ if __name__ == '__main__':
         print(result)
         if result == correctResult[i]:
             correct += 1
-        if result is not None:
-            total += 1
         i += 1
     print(100 * correct/total)
-
-

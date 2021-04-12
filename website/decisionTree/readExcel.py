@@ -2,7 +2,7 @@ import pprint
 
 import pandas as pd
 
-file = r'./data/Data1.xls'
+file = r'data/Data1.xls'
 data = pd.read_excel(file, sheet_name=0)
 data.drop(data.columns[[0, -3]], axis=1, inplace=True)
 data.fillna('', inplace=True)
