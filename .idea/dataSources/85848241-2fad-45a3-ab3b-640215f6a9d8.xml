@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="informatics">
+  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.19">
+    <root id="1">
+      <ServerVersion>10.3.23</ServerVersion>
+      <DefaultEngine>InnoDB</DefaultEngine>
+      <DefaultCasing>exact</DefaultCasing>
+    </root>
+    <schema id="2" parent="1" name="c2097255_informatics">
+      <Current>1</Current>
+      <Collation>latin1_swedish_ci</Collation>
+    </schema>
+    <schema id="3" parent="1" name="information_schema">
+      <Collation>utf8_general_ci</Collation>
+    </schema>
+    <schema id="4" parent="1" name="sample">
+      <Collation>latin1_swedish_ci</Collation>
+    </schema>
+  </database-model>
+</dataSource>
