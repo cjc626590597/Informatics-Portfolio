@@ -34,7 +34,8 @@
 		{
 			"@type": "PropertyValue",
 			"name": "Processor frequency",
-			"value": "1.80"
+			"value": "1.80",
+			"unitCode": "Ghz"
 		},
 		{
 			"@type": "PropertyValue",
@@ -44,27 +45,32 @@
 		{
 			"@type": "PropertyValue",
 			"name": "RAM capacity",
-			"value": "8"
+			"value": "8",
+			"unitCode": "GB"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "ROM capacity",
-			"value": "128 GB"
+			"value": "128",
+			"unitCode": "GB"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "Battery capacity",
-			"value": "5000 mAh"
+			"value": "5000",
+			"unitCode": "mAh"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "Rear camera pixels",
-			"value": "13 megapixel"
+			"value": "13",
+			"unitCode": "megapixel"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "Front camera pixels",
-			"value": "8 megapixel"
+			"value": "8",
+			"unitCode": "megapixel"
 		},
 		{
 			"@type": "PropertyValue",
@@ -110,7 +116,8 @@
 		{
 			"@type": "PropertyValue",
 			"name": "Processor frequency",
-			"value": "2.00"
+			"value": "2.00",
+			"unitCode": "Ghz"
 		},
 		{
 			"@type": "PropertyValue",
@@ -120,27 +127,32 @@
 		{
 			"@type": "PropertyValue",
 			"name": "RAM capacity",
-			"value": "3"
+			"value": "3",
+			"unitCode": "GB"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "ROM capacity",
-			"value": "32 GB"
+			"value": "32",
+			"unitCode": "GB"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "Battery capacity",
-			"value": "5000 mAh"
+			"value": "5000",
+			"unitCode": "mAh"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "Rear camera pixels",
-			"value": "12 megapixel"
+			"value": "12",
+			"unitCode": "megapixel"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "Front camera pixels",
-			"value": "8 megapixel"
+			"value": "8",
+			"unitCode": "megapixel"
 		},
 		{
 			"@type": "PropertyValue",
