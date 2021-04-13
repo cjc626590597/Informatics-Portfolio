@@ -93,6 +93,7 @@ body{
 }
 
 #PS_line{
+    width:220px;
     position:relative;
     z-index:11;
     display: block;
@@ -111,6 +112,7 @@ body{
 }
 
 #PFC_line{
+    width:210px;
     position:relative;
     z-index:11;
     display: block;

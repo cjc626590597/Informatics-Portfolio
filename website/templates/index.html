@@ -8,7 +8,7 @@
 <body>
 
     <form class="form-container" method="POST" action="/">
-		{{ form.csrf_token }}
+		{{ form.csrf_token() }}
 		<div id="img">
 			<img src="{{url_for('static',filename='Image/phone.png')}}" alt="" width="400px" height="450px">
 		</div>
@@ -61,7 +61,7 @@
 			{{form.phone_front_camera}}
 		</div><br>
 		<div class="words" id="submit">
-			<a href="{{ url_for('result') }}"><input type="submit" value="Submit"></a>
+			<input type="submit" value="Search">
 		</div>
 		<div id="PRC_line">
 			<img src="{{url_for('static',filename='Image/line.png')}}" alt="">

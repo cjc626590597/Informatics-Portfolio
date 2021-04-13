@@ -3,16 +3,21 @@ from website import app, db
 from website.forms import IndexForm
 
 
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 @app.route('/index',methods=['GET','POST'])
 def index():
     form = IndexForm()
-    if (form.validate_on_submit()):
-        redirect(url_for("result"))
+    if request.method == 'POST':
+        # price = request.form.get('price')
+        if (form.validate_on_submit()):
+            return redirect(url_for('result'))
+        else:
+            flash("wrong")
+
     return render_template('index.html',form=form)
 
 
-@app.route('/result',methods=['GET','POST'])
+@app.route('/result')
 def result():
     return render_template('result.html')
 
