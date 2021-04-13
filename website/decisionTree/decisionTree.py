@@ -22,7 +22,8 @@ def retrieveTrainingData():
     [0]List: data used to train (dataSet[-1] is label)
     [1]List: features used to classify
     """
-    file = r'data/trainingData.xls'
+    # TODO change this static dataSet to getting data from database
+    file = r'./data/trainingData.xls'
     data = pd.read_excel(file, sheet_name=0)
     data.drop(data.columns[[0, -3]], axis=1, inplace=True)
     data.fillna('', inplace=True)
@@ -183,6 +184,16 @@ def calculateGainRatioForContinuousDataSet(dataSet, empiricalEntropy, value, ind
     return gainRatio, 0, 0
 
 
+def countNumValue(sortedValue):
+    labels = {}
+    for i in range(0, len(sortedValue)):
+        label = sortedValue[i]
+        if label not in labels.keys():
+            labels[label] = 0
+        labels[label] += 1
+    return labels
+
+
 def calculateOptimalFeature(dataSet, features):
     """
     Calculate optimal feature for classification
@@ -200,6 +211,7 @@ def calculateOptimalFeature(dataSet, features):
     # for continuous data, use dict to record its optimal value
     optimalFeatureDict = {}
     # go through all features
+
     for i in range(total):
         # values of this feature
         featureValues = [entry[i] for entry in dataSet]
@@ -215,11 +227,15 @@ def calculateOptimalFeature(dataSet, features):
                 baseGainRatio = gainRatio
         # if feature is number
         else:
-            sortedValues = sorted(featureValues)
+            # setValues is a new array that deletes duplicate elements
             values = []
             bestValueIndex = 0
-            for j in range(len(featureValues) - 1):
-                values.append((sortedValues[j] + sortedValues[j + 1]) / 2.0)
+            setValues = set(featureValues)
+            setValues = list(setValues)
+            setValues = sorted(setValues)
+            for j in range(len(setValues) - 1):
+                values.append((setValues[j] + setValues[j + 1]) / 2.0)
+            # Deleting duplicate elements to ensure that all attribute elements are classified. If (266+266)/2=266 is not deleted, 266 elements will not be assigned.
             for j in range(len(values)):
                 # every value has one gainRatio
                 data = calculateGainRatioForContinuousDataSet(dataSet, empiricalEntropy, values[j], i)
@@ -233,6 +249,7 @@ def calculateOptimalFeature(dataSet, features):
                     optimalFeatureIndex = i
             # different number features have different optimal value
             optimalFeatureDict[features[i]] = values[bestValueIndex]
+
     if type(dataSet[0][optimalFeatureIndex]) == str:
         optimalFeatureValue = features[optimalFeatureIndex]
     else:
@@ -256,7 +273,6 @@ def getSubFeatures(index, features):
 def createDecisionTree(dataSet, features):
     """
     create decisionTree according to C4.5 algorithm
-    :param baseDataSet: whole dataset
     :param dataSet: dataset used to train
     :param features: features of this dataset
     :return:
@@ -294,7 +310,9 @@ def createDecisionTree(dataSet, features):
         leftDataSet = getSubContinuousDataSet(dataSet, optimalFeatureIndex, value, False)
         # use dict to store children for this node to go to next feature
         children = dict()
+        # if(len(rightDataSet)!=0):
         children['>' + str(value)] = createDecisionTree(rightDataSet, subFeatures)
+        # if (len(leftDataSet) != 0):
         children['<=' + str(value)] = createDecisionTree(leftDataSet, subFeatures)
         node.child = children
     return node
@@ -318,6 +336,7 @@ def predict(root, x, features):
 
     if root.feature_name is None:
         return None
+
     index = features.index(root.feature_name)
     xValue = x[index]
     for key, node in root.child.items():
@@ -326,17 +345,27 @@ def predict(root, x, features):
                 # go to next node
                 return predict(node, x, features)
         else:
-            if key[0] == '>':
-                value = key.replace('>', '')
-                value = float(value)
-                if xValue > value:
-                    # go to next greater node
+            if (len(root.child) != 1):
+                if key[0] == '>':
+                    value = key.replace('>', '')
+                    value = float(value)
+                    if xValue > value:
+                        # go to next greater node
+                        return predict(node, x, features)
+                if key[0] == '<':
+                    value = key.replace('<=', '')
+                    value = float(value)
+                    if xValue <= value:
+                        # go to next smaller node
+                        return predict(node, x, features)
+            else:
+                if key[0] == '>':
+                    value = key.replace('>', '')
+                    value = float(value)
                     return predict(node, x, features)
-            if key[0] == '<':
-                value = key.replace('<=', '')
-                value = float(value)
-                if xValue <= value:
-                    # go to next smaller node
+                if key[0] == '<':
+                    value = key.replace('<=', '')
+                    value = float(value)
                     return predict(node, x, features)
 
 
@@ -359,14 +388,14 @@ def traverseTree(root):
 if __name__ == '__main__':
     _dataSet, _features = retrieveTrainingData()
     _root = createDecisionTree(_dataSet, _features)
-    #traverseTree(_root)
-    file = r'data/testData.xls'
+
+    # traverseTree(_root)
+    file = r'./data/testData.xls'
     data = pd.read_excel(file, sheet_name=0)
     correctResult = []
     tmp = data.values.tolist()
     for item in tmp:
         correctResult.append(item[-1])
-    print(correctResult)
     data.drop(data.columns[[0, -3, -1]], axis=1, inplace=True)
     data.fillna('', inplace=True)
     data = data.values.tolist()
@@ -375,8 +404,8 @@ if __name__ == '__main__':
     i = 0
     for item in data:
         result = predict(_root, item, _features)
-        print(result)
+        # print(result)
         if result == correctResult[i]:
             correct += 1
         i += 1
-    print(100 * correct/total)
+    print(100 * correct / total)
