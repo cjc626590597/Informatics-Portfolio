@@ -1,3 +1,125 @@
 from bs4 import BeautifulSoup     #网页解析，获取数据
 import re      #正则表达式
 import urllib.request,urllib.error        #制定URL,获取网页数据
+from website import app, db
+from website.models import all_data
+from flask_sqlalchemy import SQLAlchemy
+
+#根据条件检索数据库
+def Search(value):
+    sql = ""
+    # if(value[0] != 0):
+    #     sql + value[0]*1000
+    # if(value[0] != 0):
+    #     min = (int(value[0])-1)*1000
+    #     max = int(value[0])*1000
+    # if(value[1] != 0):
+    #     FS =
+        # sql += "all_data.Phone_price>min,all_data.Phone_price<=max"
+        # data = all_data.query.filter(all_data.Phone_price>min,all_data.Phone_price<=max).all()
+        # all_data.Phone_factory_system_kernel == "IOS"
+        # data = all_data.query.filter(text(sql)).all()
+
+    for i in range(len(value)):
+        if value[i] != 0:
+            if i == 0:
+                min = (int(value[0]) - 1) * 1000
+                max = int(value[0])*1000
+            if i == 1:
+                if value[i] == '1':
+                    FS = 'IOS'
+                else:
+                    FS = 'Android'
+            if i == 2:
+                if value[i] == '1':
+                    PSmin = 2.0;
+                    PSmax = 3.0;
+                elif value[i] == '2':
+                    PSmin = 4.0;
+                    PSmax = 5.0;
+                elif value[i] == '3':
+                    PSmin = 5.0;
+                    PSmax = 6.0;
+                elif value[i] == '4':
+                    PSmin = 6.0;
+                    PSmax = 7.0;
+                else:
+                    PSmin = 7.0;
+                    PSmax = 8.0;
+            if i == 3:
+                if value[i] == '1':
+                    POS = '360'
+                if value[i] == '2':
+                    POS = 'Android'
+                if value[i] == '3':
+                    POS = 'ColorOS'
+                if value[i] == '4':
+                    POS = 'COOL'
+                if value[i] == '5':
+                    POS = 'EMUI'
+                if value[i] == '6':
+                    POS = 'Flyme'
+                if value[i] == '7':
+                    POS = 'Funtouch'
+                if value[i] == '8':
+                    POS = 'Google'
+                if value[i] == '9':
+                    POS = 'H2OS'
+                if value[i] == '10':
+                    POS = 'HALO'
+                if value[i] == '11':
+                    POS = 'HydrogenOS'
+                if value[i] == '12':
+                    POS = 'iOS'
+                if value[i] == '13':
+                    POS = 'iQOO'
+                if value[i] == '14':
+                    POS = 'JOYUI'
+                if value[i] == '15':
+                    POS = 'KaiOS'
+                if value[i] == '16':
+                    POS = 'Legion'
+                if value[i] == '17':
+                    POS = 'LG'
+                if value[i] == '18':
+                    POS = 'Magic'
+                if value[i] == '19':
+                    POS = 'MiFavor'
+                if value[i] == '20':
+                    POS = 'MIUI'
+                if value[i] == '21':
+                    POS = 'moto'
+                if value[i] == '22':
+                    POS = 'MY'
+                if value[i] == '23':
+                    POS = 'nubia'
+                if value[i] == '24':
+                    POS = 'One'
+                if value[i] == '25':
+                    POS = 'OriginOS'
+                if value[i] == '26':
+                    POS = 'OS'
+                if value[i] == '27':
+                    POS = 'Oxygen'
+                if value[i] == '28':
+                    POS = 'realme'
+            if i == 4:
+                if value[i] == '1':
+                    PR = '720P'
+                if value[i] == '2':
+                    PR = '1080P'
+                if value[i] == '3':
+                    PR = '2k'
+                if value[i] == '4':
+                    PR = '4K'
+
+    # print(FS)
+    #POS有问题，因为不是一个必须要填的数值，所以有可能是空，这时就不可以在查询语句中直接调用，但如果先赋一个初始值，那应该赋什么为初始值呢
+    data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
+                                 all_data.Phone_factory_system_kernel == FS, all_data.Phone_screen_size >= PSmin,
+                                 all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
+                                 all_data.Phone_resolution == PR).all()
+    # data = all_data.query.filter(all_data.Phone_OS == ).all()
+    # print(data)
+    return data
+

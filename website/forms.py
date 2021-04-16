@@ -6,34 +6,32 @@ class IndexForm(FlaskForm):
     price = SelectField(
         label='*Price',
         validators=[DataRequired('Please select the price range')],
-        choices=[(0,''),(1, '1000-2000'), (2, '2000-3000'), (3, '3000-4000'), (4, '4000-5000'), (5, '5000-6000'),
-                 (6, '6000-7000')],
+        choices=[(0,''),(1, '0-1000'),(2, '1000-2000'), (3, '2000-3000'), (4, '3000-4000'), (5, '4000-5000'), (6, '5000-6000'),
+                 (7, '6000-7000')],
         default = 0,
         coerce=int
     )
     factory_system = RadioField(
-        label='*Factory System',
+        label='*Factory System kernel',
         validators=[DataRequired('Please select the Factory System')],
-        choices=[(1, 'Android'), (2, 'IOS')],
+        choices=[(1, 'IOS'),(2, 'Android')],
         coerce=int
     )
     phone_screen = SelectField(
-        label='*Phone Screen',
+        label='*Phone Screen size',
         validators=[DataRequired('Please select the screen size')],
-        choices=[(0,''),(1, '2~2.8 inches'), (2, '4.2~4.7 inches'), (3, '5.05~5.99 inches'), (4, '6.0~6.9 inches'),
-                 (5, '7.09~7.92 inches'), (6, '8 inches')],
+        choices=[(0,''),(1, '2.0~3.0 inches'), (2, '4.0~5.0 inches'), (3, '5.0~6.0 inches'), (4, '6.0~7.0 inches'),
+                 (5, '7.0~8.0 inches')],
         default=0,
         coerce=int
     )
     phone_OS = SelectField(
         label='Phone Operate System',
-        choices=[(0,''),(1, 'Harmony'), (2, 'TiJOS'), (3, 'Android'), (4, 'Droi'),
-                 (5, 'samsung'), (6, 'ZUI'), (7, 'ZenUI'), (8, 'water'), (9, 'Surface Duo UI'), (10, 'Surface Duo UI'),
-                 (11, 'Smartisan'),(12, 'ROG UI'),(13, 'Redmagic'),(14, 'realme UI'),(15, 'Oxygen OS'),(16, 'OneUI'),
-                 (17, 'nubia UI'),(18, 'MY UI'),(19, 'moto UI'),(20, 'MIUI'),(21, 'MiFavor'),(22, 'Magic'),
-                 (23, 'LG UX'),(24, 'Legion'),(25, 'Kai'),(26, 'JOYUI'),(27, 'iQOO'),(28, 'IOS'),(29, 'HydrogenOS'),
-                 (30, 'Hydrogen'),(31, 'HALO'),(32, 'H2OS'),(33, 'Google Android Pie'),(34, 'Funtouch OS'),
-                 (35, 'Flyme OS'),(36, 'EMUI'),(37, 'COOL UI'),(38, 'ColorOS'),(39, '360 OS')],
+        choices=[(0,''),(1, '360'), (2, 'Android'), (3, 'ColorOS'), (4, 'COOL'),
+                 (5, 'EMUI'), (6, 'Flyme'), (7, 'Funtouch'), (8, 'Google'), (9, 'H2OS'), (10, 'HALO'),
+                 (11, 'HydrogenOS'),(12, 'iOS'),(13, 'iQOO'),(14, 'JOYUI'),(15, 'KaiOS'),(16, 'Legion'),
+                 (17, 'LG'),(18, 'Magic'),(19, 'MiFavor'),(20, 'MIUI'),(21, 'moto'),(22, 'MY'),
+                 (23, 'nubia'),(24, 'One'),(25, 'OriginOS'),(26, 'OS'),(27, 'Oxygen'),(28, 'realme')],
         default=0,
         coerce=int
     )
@@ -93,3 +91,4 @@ class IndexForm(FlaskForm):
         coerce=int
     )
     submit = SubmitField('Search')
+
