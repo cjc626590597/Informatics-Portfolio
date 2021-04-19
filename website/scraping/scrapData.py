@@ -8,36 +8,35 @@ from website.scraping.utils.askHtml import askURL
 
 
 def main():
-    # 1 从表格中获取所有手机URL
+    # 1 Get all the urls in URLs.xls
     urlList = getURL()
-    # 2 爬取网页
+    # 2 Scraping the data
     phoneList = getData(urlList)
-    # # 3 保存所有手机信息到表格中
+    # 3 Save the data to excel
     saveData(phoneList)
 
-#获取所有手机网页链接
+#Get all the urls in URLs.xls
 def getURL():
     data = xlrd.open_workbook("data/URLs.xls")
     table = data.sheets()[0]
-    startRows = 1 #一行数据代表一部手机
+    startRows = 1 # A row data means a phone
     endRows = 10
     urlList = []
-    for i in range(startRows, endRows): # 9部手机
+    for i in range(startRows, endRows):
         rowValues = table.row_values(i)
         urlList.append(rowValues[0])
     return urlList
 
-#爬取网页
+#Scrap the website
 def getData(urlList):
     datalist = []
-    for url in urlList: #一次性检索不同的url，不同的url代表不同的手机
+    for url in urlList: #Retrieval different urls at a time, different urls mean different phoens
         print(url)
-        html = askURL(url)    #保存获取到的网页源码
+        html = askURL(url)    #Protect website source codes
         #     # print(html)
 
-        #2.逐一解析数据
         bs = BeautifulSoup(html,"html.parser")
-        datas = {}  # 存放各种参数
+        datas = {}  # Save all data
         phoneName = bs.findAll(class_="product-model__name")[0].text
         datas["Phone_name"] = phoneName
         phone_div = str(bs.findAll(class_='big-pic-fl'))
@@ -45,14 +44,14 @@ def getData(urlList):
         phoneUrl = str(re.findall(findURL, phone_div)[0])
         datas['Phone_pic_URL'] = phoneUrl
 
-        # 获取表格的所有参数
+        # Save all data of excel
         for table in bs.findAll('table'):
-            for tr in table.children: #GG是table,children是tr,然后分为th和td
+            for tr in table.children: #GG is table,children is tr
                 if type(tr) == bs4.element.Tag:
-                    result = str.split(tr.text, '\n')  #tr.text直接获取文本，然后根据换行分隔
-                    result = [j for j in result if j != ''] #去除空值
+                    result = str.split(tr.text, '\n')  #tr.text
+                    result = [j for j in result if j != ''] #Remove null value
                     for j in range(len(result)):
-                        result[j] = result[j].replace('纠错','').replace('>','') #多余信息替换
+                        result[j] = result[j].replace('纠错','').replace('>','')
                     # print(result)  #result即列表['电商报价','￥6989']
                     properties = ['电商报价','出厂系统内核','主屏尺寸','操作系统','主屏分辨率','CPU频率','核心数','RAM容量','ROM容量','电池容量','后置摄像头','前置摄像头']
                     if result[0] in properties:
@@ -83,14 +82,14 @@ def getData(urlList):
                         elif th == "前置摄像头":
                             datas["Phone_front_camera"] = td
         print(datas)
-        # 将一部手机的属性字典加进列表里
+        # 将一部手机的属性字典加进列表里Put dictionary in list
         datalist.append(datas)
 
     return datalist
 
-#保存数据
+#Save the data
 def saveData(datalist):
-     #将字典列表转换为DataFrame
+     #Change the list to DataFrame
      print("save")
      book=xlwt.Workbook(encoding="utf-8",style_compression=0)
      sheet=book.add_sheet("experiment",cell_overwrite_ok=True)

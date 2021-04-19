@@ -6,21 +6,20 @@ import xlwt
 from website.scraping.utils.askHtml import askURL
 
 def main():
-    # 1 获取所有手机URL
+    # 1 1 Get all the urls from website
     urlList = getURL()
-    # 2 保存所有手机url到表格中
+    # 2 Save all the urls to excel
     saveData(urlList)
 
-#获取所有手机网页链接
+#Get all the urls from website
 def getURL():
     baseurl = "https://detail.zol.com.cn/cell_phone_index/subcate57_0_list_1_0_1_2_0_"
     urls = []
-    for i in range(1,20,1):   ###############################################将(1,2,1)改为(1,100,1)
+    for i in range(1,20,1):
         url = baseurl + str(i) + ".html"
-        html = askURL(url)    #保存获取到的网页源码
+        html = askURL(url)    #Save the source code
         # print(html)
 
-        #2.逐一解析数据
         bs = BeautifulSoup(html,"html.parser")
 
         for item in bs.select('h3'):
@@ -32,7 +31,7 @@ def getURL():
 
     finalURL = []
     for url in urls:
-        html = askURL(url)  # 保存获取到的网页源码
+        html = askURL(url)  #Save the source code
         bs = BeautifulSoup(html, "html.parser")
         for item in bs.findAll(class_='section-more'):
             item = str(item)
@@ -42,9 +41,9 @@ def getURL():
     # print(finalURL)
     return finalURL
 
-#保存数据
+#Save the data
 def saveData(urlList):
-     #将url列表转换为DataFrame
+     #Change the lisst to DataFrame
      print("save")
      book=xlwt.Workbook(encoding="utf-8",style_compression=0)
      sheet=book.add_sheet("URLs",cell_overwrite_ok=True)
