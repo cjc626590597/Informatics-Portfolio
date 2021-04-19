@@ -389,7 +389,7 @@ if __name__ == '__main__':
     _dataSet, _features = retrieveTrainingData()
     _root = createDecisionTree(_dataSet, _features)
 
-    # traverseTree(_root)
+    traverseTree(_root)
     file = r'./data/testData.xls'
     data = pd.read_excel(file, sheet_name=0)
     correctResult = []
