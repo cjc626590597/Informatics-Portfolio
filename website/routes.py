@@ -56,29 +56,23 @@ def result():
                item.Phone_brand,
                item.Phone_target_group]
         dataList.append(tmp)
-    exportXML(dataList)
-    exportJSON_LD(dataList)
     if request.method == 'POST':
-        print(1)
         if 'XML' in request.form:
-            print('XML')
+            exportXML(dataList)
             return redirect(url_for('downloadXML'))
         elif 'JSONLD' in request.form:
-            print('JSONLD')
+            exportJSON_LD(dataList)
             return redirect(url_for('downloadJSONLD'))
-    print(2)
-    return render_template('result.html', data=data, form=form)
+    return render_template('result.html', data=dataList, form=form)
 
 
 @app.route('/downloadXML', methods=['GET', 'POST'])
 def downloadXML():
-    print('WEBXML')
     return send_from_directory(app.root_path + '/export/', 'phones.xml', as_attachment=True)
     pass
 
 
 @app.route('/downloadJSONLD', methods=['GET', 'POST'])
 def downloadJSONLD():
-    print('WEBJSON')
     return send_from_directory(app.root_path + '/export/', 'phones.jsonld', as_attachment=True)
     pass

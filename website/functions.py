@@ -305,8 +305,8 @@ def Search(value):
                                             data = all_data.query.filter(all_data.Phone_price > min,
                                                                          all_data.Phone_price <= max).all()
     # #TODO: data for test
-    data = all_data.query.filter(all_data.Phone_price > min,
-                                 all_data.Phone_price <= max).all()
+    # data = all_data.query.filter(all_data.Phone_price > min,
+    #                              all_data.Phone_price <= max).all()
     _dataSet, _features = retrieveTrainingData()
     _root = createDecisionTree(_dataSet, _features)
     for item in data:
@@ -324,5 +324,5 @@ def Search(value):
                  item.Phone_front_camera,
                  item.Phone_brand]
         item.Phone_target_group = predict(_root, phone, _features)
-    print(data)
+    #print(data)
     return data

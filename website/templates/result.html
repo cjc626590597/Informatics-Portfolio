@@ -4,17 +4,117 @@
     <meta charset="utf-8">
     <title>Result</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Stylesheets/result.css') }}">
-    <script type="text/javascript" src="{{ url_for('static',filename='JavaScript/result.js') }}"></script>
+    {#    <script type="text/javascript" src="{{ url_for('static',filename='JavaScript/result.js') }}"></script>#}
 </head>
+<script>
+    var i = 0;
+    var data = {{ data|safe }};
+    var length_ = data.length
+    var lb = document.getElementById("left");
+    var rb = document.getElementById("right");
+    var name_
+    var price
+    var factory
+    var screen
+    var operate
+    var resolution
+    var frequency
+    var kernel
+    var RAM
+    var ROM
+    var battery
+    var rear
+    var front
+    var brand
+    var type
+    window.onload = function () {
+        lb = document.getElementById("left");
+        rb = document.getElementById("right");
+        name_ = document.getElementById("name");
+        price = document.getElementById("price");
+        factory = document.getElementById("factory");
+        screen = document.getElementById("screen");
+        operate = document.getElementById("operate");
+        resolution = document.getElementById("resolution");
+        frequency = document.getElementById("frequency");
+        kernel = document.getElementById("kernel");
+        RAM = document.getElementById("RAM");
+        ROM = document.getElementById("ROM");
+        battery = document.getElementById("battery");
+        rear = document.getElementById("rear");
+        front = document.getElementById("front");
+        brand = document.getElementById("brand");
+        type = document.getElementById("type");
+
+        name_.innerHTML = data[i][1];
+        price.innerHTML = data[i][2];
+        factory.innerHTML = data[i][3];
+        screen.innerHTML = data[i][4];
+        operate.innerHTML = data[i][5];
+        resolution.innerHTML = data[i][6];
+        frequency.innerHTML = data[i][7];
+        kernel.innerHTML = data[i][8];
+        RAM.innerHTML = data[i][9];
+        ROM.innerHTML = data[i][10];
+        battery.innerHTML = data[i][11];
+        rear.innerHTML = data[i][12];
+        front.innerHTML = data[i][13];
+        document.getElementById("url").src = data[i][14];
+        brand.innerHTML = data[i][15];
+        type.innerHTML = data[i][16];
+
+        lb.onclick = function () {
+            if (i == 0)
+                i = length_ - 1;
+            else
+                i -= 1;
+            name_.innerHTML = data[i][1];
+            price.innerHTML = data[i][2];
+            factory.innerHTML = data[i][3];
+            screen.innerHTML = data[i][4];
+            operate.innerHTML = data[i][5];
+            resolution.innerHTML = data[i][6];
+            frequency.innerHTML = data[i][7];
+            kernel.innerHTML = data[i][8];
+            RAM.innerHTML = data[i][9];
+            ROM.innerHTML = data[i][10];
+            battery.innerHTML = data[i][11];
+            rear.innerHTML = data[i][12];
+            front.innerHTML = data[i][13];
+            document.getElementById("url").src = data[i][14];
+            brand.innerHTML = data[i][15];
+            type.innerHTML = data[i][16];
+        }
+        rb.onclick = function () {
+            if (i == length_ - 1)
+                i = 0;
+            else
+                i += 1;
+            name_.innerHTML = data[i][1];
+            price.innerHTML = data[i][2];
+            factory.innerHTML = data[i][3];
+            screen.innerHTML = data[i][4];
+            operate.innerHTML = data[i][5];
+            resolution.innerHTML = data[i][6];
+            frequency.innerHTML = data[i][7];
+            kernel.innerHTML = data[i][8];
+            RAM.innerHTML = data[i][9];
+            ROM.innerHTML = data[i][10];
+            battery.innerHTML = data[i][11];
+            rear.innerHTML = data[i][12];
+            front.innerHTML = data[i][13];
+            document.getElementById("url").src = data[i][14];
+            brand.innerHTML = data[i][15];
+            type.innerHTML = data[i][16];
+        }
+    }
+
+</script>
 <body>
 <div class="predict">Mobile phone category predict:</div>
 <div id="type">{{ data[0].Phone_target_group }}</div>
 <img src="{{ url_for('static',filename='Image/left.png') }}" id="left" class="left">
 <img src="{{ data[0].Phone_pic_URL }}" class="phone" id="url">
-<script>
-    var i = 0;
-    var len = len(data);
-</script>
 <table class="text">
     <tr>
         <td>Mobile Phone Name</td>
