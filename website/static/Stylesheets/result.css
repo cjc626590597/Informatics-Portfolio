@@ -36,9 +36,6 @@ body{
     font-size: 18px;
     font-family: "Lucida Console", "Courier New", monospace;
 }
-#p{
-    background-color:grey
-}
 #name{
     background-color: #E6E6FA;
     border-radius: 5px;
