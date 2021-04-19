@@ -11,7 +11,7 @@ body{
 .right{
     position: absolute;
     top: 300px;
-    right: 100px;
+    left: 1310px;
     width: 120px;
     height: 120px;
 }
@@ -28,7 +28,7 @@ body{
 .print{
     position: absolute;
     top: 650px;
-    left: 620px;
+    left: 650px;
     width: 200px;
     height: 50px;
     color: 	#7B68EE ;
@@ -43,10 +43,25 @@ body{
     height: 25px;
     text-align: center;
 }
-#price,#brand,#resolution,#RAM,#ROM,#rear,#front,#screen,#factory,#operate,#type,#battery,#kernel,#frequency{
+#price,#brand,#resolution,#RAM,#ROM,#rear,#front,#screen,#factory,#operate,#battery,#kernel,#frequency{
     background-color: #E6E6FA;
     border-radius: 5px;
     width: 120%;
     height: 25px;
     text-align: center;
+}
+#type{
+    position: absolute;
+    top: 50px;
+    left: 950px;
+    font-size: 28px;
+    color: red;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+.predict{
+    position: absolute;
+    top: 50px;
+    left: 430px;
+    font-size: 28px;
+    font-family: "Lucida Console", "Courier New", monospace;
 }
