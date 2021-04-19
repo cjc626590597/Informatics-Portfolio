@@ -230,5 +230,7 @@ def Search(value):
                                  all_data.Phone_RAM_capacity == PRAM, all_data.Phone_ROM_capacity == PROM,
                                  all_data.Phone_battery_capacity >= PBCmin, all_data.Phone_battery_capacity <= PBCmax,
                                  all_data.Phone_rear_camera == PRC, all_data.Phone_front_camera == PFC).all()
+    data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max).all()
+    print(data)
     return data
 

@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Result</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Stylesheets/result.css') }}">
+	<script type="text/javascript" src="{{ url_for('static',filename='JavaScript/result.js') }}"></script>
 </head>
 <body>
-    <form>
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-        <h1>result</h1>
-    </form>
-
+	<div class="predict">Mobile phone category predict: </div><div id="type">Multi-purpose</div>
+	<img src="{{ url_for('static',filename='Image/left.png') }}" id="left" class="left">
+	<img src="{{data[0].Phone_pic_URL}}" class="phone" id="url">
+    <table class="text">
+		<tr>
+			<td>Mobile Phone Name</td><td colspan="4"><p id="name">{{data[0].Phone_name}}</p></td>
+		</tr>
+		<tr>
+			<td>Brand</td><td><p id="brand">{{data[0].Phone_brand}}</p></td>
+			<td width="100px"></td>
+			<td>Price</td><td><p id="price">{{data[0].Phone_price}}</p></td>
+		</tr>
+		<tr>
+			<td>Screen Size</td><td><p id="screen">{{data[0].Phone_screen_size}}</p></td>
+			<td></td>
+			<td>Resolution</td><td><p id="resolution">{{data[0].Phone_resolution}}</p></td>
+		</tr>
+		<tr>
+			<td>Factory System</td><td><p id="factory">{{data[0].Phone_factory_system_kernel}}</p></td>
+			<td></td>
+			<td>Operate System</td><td><p id="operate">{{data[0].Phone_OS}}</p></td>
+		</tr>
+		<tr>
+			<td>Frequency</td><td><p id="frequency">{{data[0].Phone_frequency}}</p></td>
+			<td></td>
+			<td>Kernel Num</td><td><p id="kernel">{{data[0].Phone_kernel_num}}</p></td>
+		</tr>
+		<tr>
+			<td width="200px">Random Access Memory</td><td><p id="RAM">{{data[0].Phone_RAM_capacity}}</p></td>
+			<td></td>
+			<td>Read Only Memory</td><td><p id="ROM">{{data[0].Phone_RAM_capacity}}</p></td>
+		</tr>
+		<tr>
+			<td>Rear Camera</td><td><p id="rear">{{data[0].Phone_rear_camera}}</p></td>
+			<td></td>
+			<td>Front Camera</td><td><p id="front">{{data[0].Phone_front_camera}}</p></td>
+		</tr>
+		<tr>
+			<td>Battery Capacity</td><td><p id="battery">{{data[0].Phone_battery_capacity}}</p></td>
+			<td colspan="4"></td>
+		</tr>
+	</table>
+	<img src="{{ url_for('static',filename='Image/Right.png') }}" id="right" class="right">
+	<input type="submit" value="Print All Result" class="print">
 </body>
 </html>
