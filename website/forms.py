@@ -50,7 +50,7 @@ class IndexForm(FlaskForm):
     )
     phone_kernel_num = SelectField(
         label='Phone Kernel Num',
-        choices=[(0,''),(1,'4 kernel'),(2,'6 kernel'),(3,'8 kernel')],
+        choices=[(0,''),(1,'1 kernel'),(2,'2 kernel'),(3,'4 kernel'),(4,'6 kernel'),(5,'8 kernel')],
         default=0,
         coerce=int
     )
@@ -62,22 +62,23 @@ class IndexForm(FlaskForm):
     )
     phone_ROM_capacity = SelectField(
         label='Phone Read Only Memory',
-        choices=[(0,''),(1,'32GB'),(2,'64GB'),(3,'128GB'),(4,'256GB'),(5,'512GB'),(6,'1TB')],
+        choices=[(0,''),(1,'32GB'),(2,'64GB'),(3,'128GB'),(4,'256GB'),(5,'512GB')],
         default=0,
         coerce=int
     )
     phone_battery_capacity = SelectField(
         label='Phone Battery Capacity',
-        choices=[(0,''),(1,'1000~2000mAh'),(2,'2000~3000mAh'),(3,'3000~4000mAh'),(4,'4000~5000mAh'),(5,'5000~6000mAh'),
-                 (6,'10000mAh')],
+        choices=[(0,''),(1,'1000~2000mAh'),(2,'2000~3000mAh'),(3,'3000~4000mAh'),(4,'4000~5000mAh'),(5,'5000~6000mAh')],
         default=0,
         coerce=int
     )
     phone_rear_camera = SelectField(
         label='Phone Rear Camera',
-        choices=[(0,''),(1,'8 million pixels'),(2,'12 million pixels'),(3,'13 million pixels'),(4,'16 million pixels'),
-                 (5,'20 million pixels'),(6,'24 million pixels'),(7,'40 million pixels'),(8,'48 million pixels'),
-                 (9,'50 million pixels'),(10,'64 million pixels'),(11,'100 million pixels'),(12,'108 million pixels')],
+        choices=[(0,''),(1,'2 million pixels'),(2,'4 million pixels'),(3,'6 million pixels'),(4,'8 million pixels'),
+                 (5,'12 million pixels'),(6,'13 million pixels'),(7,'14 million pixels'),(8,'16 million pixels'),
+                 (9,'19 million pixels'),(10,'20 million pixels'),(11,'21 million pixels'),(12,'24 million pixels'),
+                 (12,'32 million pixels'),(12,'40 million pixels'),(12,'48 million pixels'),(12,'50 million pixels'),
+                 (12,'64 million pixels'),(12,'80 million pixels'),(12,'100 million pixels')],
         default=0,
         coerce=int
     )

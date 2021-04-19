@@ -19,7 +19,6 @@ def Search(value):
         # data = all_data.query.filter(all_data.Phone_price>min,all_data.Phone_price<=max).all()
         # all_data.Phone_factory_system_kernel == "IOS"
         # data = all_data.query.filter(text(sql)).all()
-
     for i in range(len(value)):
         if value[i] != 0:
             if i == 0:
@@ -112,13 +111,82 @@ def Search(value):
                     PR = '2k'
                 if value[i] == '4':
                     PR = '4K'
+            if i == 5:
+                if value[i] == '1':
+                    PFmin = 1.0
+                    PFmax = 1.5
+                if value[i] == '2':
+                    PFmin = 1.5
+                    PFmax = 2.0
+                if value[i] == '3':
+                    PFmin = 2.0
+                    PFmax = 2.2
+                if value[i] == '4':
+                    PFmin = 2.2
+                    PFmax = 2.4
+                if value[i] == '5':
+                    PFmin = 2.4
+                    PFmax = 2.6
+                if value[i] == '6':
+                    PFmin = 2.6
+                    PFmax = 2.8
+                if value[i] == '7':
+                    PFmin = 2.8
+                    PFmax = 3.0
+            if i == 6:
+                if value[i] == '1':
+                    PKN = 1
+                if value[i] == '2':
+                    PKN = 2
+                if value[i] == '3':
+                    PKN = 4
+                if value[i] == '4':
+                    PKN = 6
+                if value[i] == '5':
+                    PKN = 8
+            if i == 7:
+                if value[i] == '1':
+                    PRAM  = 2
+                if value[i] == '2':
+                    PRAM  = 3
+                if value[i] == '3':
+                    PRAM  = 4
+                if value[i] == '4':
+                    PRAM  = 6
+                if value[i] == '5':
+                    PRAM  = 8
+                if value[i] == '6':
+                    PRAM  = 12
+            if i == 8:
+                if value[i] == '1':
+                    PROM = 32
+                if value[i] == '2':
+                    PROM = 64
+                if value[i] == '3':
+                    PROM = 128
+                if value[i] == '4':
+                    PROM = 256
+                if value[i] == '5':
+                    PROM = 512
+            if i == 9:
+                PBCmin = int(value[i]) * 1000
+                PBCmax = (int(value[i])  + 1) * 1000
+            if i == 10:
+                if value[i] == '1':
+                    PRC = 2
+                
+
 
     # print(FS)
     #POS有问题，因为不是一个必须要填的数值，所以有可能是空，这时就不可以在查询语句中直接调用，但如果先赋一个初始值，那应该赋什么为初始值呢
     data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
                                  all_data.Phone_factory_system_kernel == FS, all_data.Phone_screen_size >= PSmin,
                                  all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
-                                 all_data.Phone_resolution == PR).all()
+                                 all_data.Phone_resolution == PR, all_data.Phone_frequency >= PFmin,
+                                 all_data.Phone_frequency <= PFmax, all_data.Phone_kernel_num == PKN,
+                                 all_data.Phone_RAM_capacity == PRAM, all_data.Phone_ROM_capacity == PROM,
+                                 all_data.Phone_battery_capacity >= PBCmin, all_data.Phone_battery_capacity <= PBCmax,
+                                 ).all()
     # data = all_data.query.filter(all_data.Phone_OS == ).all()
     # print(data)
     return data
