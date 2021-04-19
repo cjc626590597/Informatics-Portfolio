@@ -1,5 +1,5 @@
-int i = 0;
-int len = len(data);
+// var i = 0;
+// var len = len(data) ;
 window.onload = function(){
     var lb = document.getElementById("left");
     var rb = document.getElementById("right");
