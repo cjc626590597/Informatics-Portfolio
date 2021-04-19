@@ -7,7 +7,7 @@
 	<script type="text/javascript" src="{{ url_for('static',filename='JavaScript/result.js') }}"></script>
 </head>
 <body>
-	<div class="predict">Mobile phone category predict: </div><div id="type">Multi-purpose</div>
+	<div class="predict">Mobile phone category predict: </div><div id="type">{{ data[0].Phone_target_group }}</div>
 	<img src="{{ url_for('static',filename='Image/left.png') }}" id="left" class="left">
 	<img src="{{data[0].Phone_pic_URL}}" class="phone" id="url">
     <table class="text">

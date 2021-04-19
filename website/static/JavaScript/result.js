@@ -17,6 +17,7 @@ window.onload = function(){
     var rear = document.getElementById("rear");
     var front = document.getElementById("front");
     var brand = document.getElementById("brand");
+    var type = document.getElementById("type");
     lb.onclick = function(){
     	if(i == 0)
     		i = l;
@@ -37,6 +38,7 @@ window.onload = function(){
         front.innerHTML = data[i].Phone_front_camera;
         document.getElementById("url").src=data[i].Phone_pic_URL;
         brand.innerHTML = data[i].Phone_brand;
+        type.innerHTML = data[i].Phone_target_group;
     }
     rb.onclick = function(){
     	if(i == l-1)
@@ -58,5 +60,6 @@ window.onload = function(){
         front.innerHTML = data[i].Phone_front_camera;
         document.getElementById("url").src=data[i].Phone_pic_URL;
         brand.innerHTML = data[i].Phone_brand;
+        type.innerHTML = data[i].Phone_target_group;
     }
 }

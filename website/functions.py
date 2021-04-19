@@ -1,7 +1,4 @@
-from bs4 import BeautifulSoup
-import re
 import urllib.request,urllib.error
-from website import app, db
 from website.models import all_data
 from flask_sqlalchemy import SQLAlchemy
 

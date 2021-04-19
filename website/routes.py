@@ -1,11 +1,13 @@
-from flask import Flask, render_template, url_for, request, redirect, flash, session
-from website import app, db
+from flask import render_template, url_for, request, redirect, flash
+from website import app
 from website.forms import IndexForm
 from website.functions import Search
 
 value = []
-@app.route('/',methods=['GET','POST'])
-@app.route('/index',methods=['GET','POST'])
+
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
     form = IndexForm()
     if request.method == 'POST':
@@ -26,13 +28,11 @@ def index():
         else:
             flash("wrong")
 
-    return render_template('index.html',form=form)
+    return render_template('index.html', form=form)
 
 
 @app.route('/result')
 def result():
     data = Search(value)
     print(data)
-    return render_template('result.html',data=data)
-
-
+    return render_template('result.html', data=data)
