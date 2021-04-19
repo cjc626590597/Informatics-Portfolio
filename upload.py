@@ -22,7 +22,6 @@ for i in range(0,len(dataList)):
                    Phone_front_camera=dataList[i][12],Phone_pic_URL=dataList[i][13])
         db.session.add(post)
         db.session.commit()
-        print("第%d没问题",i)
 
 
 
