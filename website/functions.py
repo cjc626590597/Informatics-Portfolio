@@ -1,24 +1,12 @@
-from bs4 import BeautifulSoup     #网页解析，获取数据
-import re      #正则表达式
-import urllib.request,urllib.error        #制定URL,获取网页数据
+from bs4 import BeautifulSoup
+import re
+import urllib.request,urllib.error
 from website import app, db
 from website.models import all_data
 from flask_sqlalchemy import SQLAlchemy
 
 #根据条件检索数据库
 def Search(value):
-    sql = ""
-    # if(value[0] != 0):
-    #     sql + value[0]*1000
-    # if(value[0] != 0):
-    #     min = (int(value[0])-1)*1000
-    #     max = int(value[0])*1000
-    # if(value[1] != 0):
-    #     FS =
-        # sql += "all_data.Phone_price>min,all_data.Phone_price<=max"
-        # data = all_data.query.filter(all_data.Phone_price>min,all_data.Phone_price<=max).all()
-        # all_data.Phone_factory_system_kernel == "IOS"
-        # data = all_data.query.filter(text(sql)).all()
     for i in range(len(value)):
         if value[i] != 0:
             if i == 0:
@@ -31,20 +19,20 @@ def Search(value):
                     FS = 'Android'
             if i == 2:
                 if value[i] == '1':
-                    PSmin = 2.0;
-                    PSmax = 3.0;
+                    PSmin = 2.0
+                    PSmax = 3.0
                 elif value[i] == '2':
-                    PSmin = 4.0;
-                    PSmax = 5.0;
+                    PSmin = 4.0
+                    PSmax = 5.0
                 elif value[i] == '3':
-                    PSmin = 5.0;
-                    PSmax = 6.0;
+                    PSmin = 5.0
+                    PSmax = 6.0
                 elif value[i] == '4':
-                    PSmin = 6.0;
-                    PSmax = 7.0;
+                    PSmin = 6.0
+                    PSmax = 7.0
                 else:
-                    PSmin = 7.0;
-                    PSmax = 8.0;
+                    PSmin = 7.0
+                    PSmax = 8.0
             if i == 3:
                 if value[i] == '1':
                     POS = '360'
@@ -174,11 +162,66 @@ def Search(value):
             if i == 10:
                 if value[i] == '1':
                     PRC = 2
-                
+                if value[i] == '2':
+                    PRC = 4
+                if value[i] == '3':
+                    PRC = 6
+                if value[i] == '4':
+                    PRC = 8
+                if value[i] == '5':
+                    PRC = 12
+                if value[i] == '6':
+                    PRC = 13
+                if value[i] == '7':
+                    PRC = 14
+                if value[i] == '8':
+                    PRC = 16
+                if value[i] == '9':
+                    PRC = 19
+                if value[i] == '10':
+                    PRC = 20
+                if value[i] == '11':
+                    PRC = 21
+                if value[i] == '12':
+                    PRC = 24
+                if value[i] == '13':
+                    PRC = 32
+                if value[i] == '14':
+                    PRC = 40
+                if value[i] == '15':
+                    PRC = 48
+                if value[i] == '16':
+                    PRC = 50
+                if value[i] == '17':
+                    PRC = 64
+                if value[i] == '18':
+                    PRC = 80
+                if value[i] == '19':
+                    PRC = 100
+            if i == 11:
+                if value[i] == '1':
+                    PFC = 5
+                if value[i] == '2':
+                    PFC = 7
+                if value[i] == '3':
+                    PFC = 8
+                if value[i] == '4':
+                    PFC = 10
+                if value[i] == '5':
+                    PFC = 12
+                if value[i] == '6':
+                    PFC = 13
+                if value[i] == '7':
+                    PFC = 16
+                if value[i] == '8':
+                    PFC = 20
+                if value[i] == '9':
+                    PFC = 24
+                if value[i] == '10':
+                    PFC = 25
+                if value[i] == '11':
+                    PFC = 32
 
-
-    # print(FS)
-    #POS有问题，因为不是一个必须要填的数值，所以有可能是空，这时就不可以在查询语句中直接调用，但如果先赋一个初始值，那应该赋什么为初始值呢
     data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
                                  all_data.Phone_factory_system_kernel == FS, all_data.Phone_screen_size >= PSmin,
                                  all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
@@ -186,8 +229,6 @@ def Search(value):
                                  all_data.Phone_frequency <= PFmax, all_data.Phone_kernel_num == PKN,
                                  all_data.Phone_RAM_capacity == PRAM, all_data.Phone_ROM_capacity == PROM,
                                  all_data.Phone_battery_capacity >= PBCmin, all_data.Phone_battery_capacity <= PBCmax,
-                                 ).all()
-    # data = all_data.query.filter(all_data.Phone_OS == ).all()
-    # print(data)
+                                 all_data.Phone_rear_camera == PRC, all_data.Phone_front_camera == PFC).all()
     return data
 

@@ -32,9 +32,6 @@ def index():
 @app.route('/result')
 def result():
     data = Search(value)
-    # print(value)
-    # print(data)
-    # print(data[0].Phone_name)
     return render_template('result.html',data=data)
 
 
