@@ -1,0 +1,126 @@
+<div itemscope itemtype="https://schema.org/Product">
+	<span itemprop="category">mobilePhone</span>
+	<span itemprop="name">OPPO A32(8GB/128GB/ All Netcom )</span>
+	<div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+		<span itemprop="price">1499.00</span>
+		<span itemprop="priceCurrency">CNY</span>
+	</div>
+	<span itemprop="size">6.50 inch</span>
+	<span itemprop="image">https://pro-fd.zol-img.com.cn/t_s300x300c5/g6/M00/02/01/ChMkKV9Z_KeIBXZUAAC-BeJRWEUAACIDwEB6AoAAL4d919.jpg</span>
+	<div itemprop="brand" itemscope itemtype="https://schema.org/Brand">
+		<span itemprop="name">OPPO</span>
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">System Kernel</span>
+		<span itemprop="value">Android</span>
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Operating System</span>
+		<span itemprop="value">Color</span>
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Resolution</span>
+		<span itemprop="value">720P</span>
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Processor frequency</span>
+		<span itemprop="value">1.80</span>
+		<meta itemprop="unitCode" content="A86">Ghz
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Kernel number</span>
+		<span itemprop="value">8</span>
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">RAM capacity</span>
+		<span itemprop="value">8</span>
+		<meta itemprop="unitCode" content="E34">GB
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">ROM capacity</span>
+		<span itemprop="value">128</span>
+		<meta itemprop="unitCode" content="E34">GB
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Battery capacity</span>
+		<span itemprop="value">5000</span>
+		<meta itemprop="unitCode" content="MAH">mAh
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Rear camera pixels</span>
+		<span itemprop="value">13</span>
+		<meta itemprop="unitCode" content="E38">megapixel
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Front camera pixels</span>
+		<span itemprop="value">8</span>
+		<meta itemprop="unitCode" content="E38">megapixel
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Usage</span>
+		<span itemprop="value">Business</span>
+	</div>
+</div>
+<div itemscope itemtype="https://schema.org/Product">
+	<span itemprop="category">mobilePhone</span>
+	<span itemprop="name">Redmi 8A(3GB/32GB/ All Netcom )</span>
+	<div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+		<span itemprop="price">599.00</span>
+		<span itemprop="priceCurrency">CNY</span>
+	</div>
+	<span itemprop="size">6.22 inch</span>
+	<span itemprop="image">https://pro-fd.zol-img.com.cn/t_s300x300c5/g1/M09/00/08/ChMljV2kSqWIUHBLAACcAbMG0LMAAP92QKihe4AAJwZ139.jpg</span>
+	<div itemprop="brand" itemscope itemtype="https://schema.org/Brand">
+		<span itemprop="name">Redmi</span>
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">System Kernel</span>
+		<span itemprop="value">MIUI</span>
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Operating System</span>
+		<span itemprop="value">MIUI</span>
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Resolution</span>
+		<span itemprop="value">720P</span>
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Processor frequency</span>
+		<span itemprop="value">2.00</span>
+		<meta itemprop="unitCode" content="A86">Ghz
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Kernel number</span>
+		<span itemprop="value">8</span>
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">RAM capacity</span>
+		<span itemprop="value">3</span>
+		<meta itemprop="unitCode" content="E34">GB
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">ROM capacity</span>
+		<span itemprop="value">32</span>
+		<meta itemprop="unitCode" content="E34">GB
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Battery capacity</span>
+		<span itemprop="value">5000</span>
+		<meta itemprop="unitCode" content="MAH">mAh
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Rear camera pixels</span>
+		<span itemprop="value">12</span>
+		<meta itemprop="unitCode" content="E38">megapixel
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Front camera pixels</span>
+		<span itemprop="value">8</span>
+		<meta itemprop="unitCode" content="E38">megapixel
+	</div>
+	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
+		<span itemprop="name">Usage</span>
+		<span itemprop="value">Business</span>
+	</div>
+</div>
