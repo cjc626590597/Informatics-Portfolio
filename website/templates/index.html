@@ -1,10 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+	<meta charset="utf-8">
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Stylesheets/index.css') }}">
 </head>
 <body>
-    <h1>index</h1>
+    <form class="form-container" method="POST" action="/">
+		{{ form.csrf_token() }}
+		<div id="img">
+			<img src="{{url_for('static',filename='Image/phone.png')}}" alt="" width="400px" height="450px">
+		</div>
+		<div class="words" id="price">
+			{{form.price.label}}
+			{{form.price}}
+		</div><br>
+		<div class="words" id="factory_system">
+			{{form.factory_system.label}}
+			{{form.factory_system}}
+		</div><br>
+		<div class="words" id="phone_screen">
+			{{form.phone_screen.label}}
+			{{form.phone_screen}}
+		</div><br>
+		<div class="words" id="phone_OS">
+			{{form.phone_OS.label}}
+			{{form.phone_OS}}
+		</div><br>
+		<div class="words" id="phone_resolution">
+			{{form.phone_resolution.label}}
+			{{form.phone_resolution}}
+		</div><br>
+		<div class="words" id="phone_frequency">
+			{{form.phone_frequency.label}}
+			{{form.phone_frequency}}
+		</div><br>
+		<div class="words" id="phone_kernel_num">
+			{{form.phone_kernel_num.label}}
+			{{form.phone_kernel_num}}
+		</div><br>
+		<div class="words" id="phone_RAM_capacity">
+			{{form.phone_RAM_capacity.label}}
+			{{form.phone_RAM_capacity}}
+		</div><br>
+		<div class="words" id="phone_ROM_capacity">
+			{{form.phone_ROM_capacity.label}}
+			{{form.phone_ROM_capacity}}
+		</div><br>
+		<div class="words" id="phone_battery_capacity">
+			{{form.phone_battery_capacity.label}}
+			{{form.phone_battery_capacity}}
+		</div><br>
+		<div class="words" id="phone_rear_camera">
+			{{form.phone_rear_camera.label}}
+			{{form.phone_rear_camera}}
+		</div><br>
+		<div class="words" id="phone_front_camera">
+			{{form.phone_front_camera.label}}
+			{{form.phone_front_camera}}
+		</div><br>
+		<div class="words" id="submit">
+			<input type="submit" value="Search">
+		</div>
+		<div id="PRC_line">
+			<img src="{{url_for('static',filename='Image/line.png')}}" alt="">
+		</div>
+		<div id="PBC_line">
+			<img src="{{url_for('static',filename='Image/line.png')}}" alt="" height="30px" >
+		</div>
+		<div id="PFC_line">
+			<img src="{{url_for('static',filename='Image/line.png')}}" alt="" height="30px" >
+		</div>
+		<div id="PS_line">
+			<img src="{{url_for('static',filename='Image/line.png')}}" alt="" height="30px" >
+		</div>
+	</form>
 </body>
 </html>
