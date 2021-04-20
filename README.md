@@ -146,37 +146,42 @@ Informatics-Portfolio
             |-- text.html
 ```
 
-| File or directory name | Description                                                  |
-| ---------------------- | ------------------------------------------------------------ |
-| README.md              | It is this document telling you how to use this project      |
-| requirements.txt       | It is mentioned above                                        |
-| wsgi.py                | It is created for 'flask run'                                |
-| website                | This is main directory for web application source code       |
-| \_\_init\_\_.py        | It is used to initialize flask setting like database and csrf |
-| app.py                 | App object for flask is created here                         |
-| forms.py               | This is used for form to select phone parameters             |
-| functions.py           | This is used to search phones in database                    |
-| models.py              | This is models for phones                                    |
-| routes.py              | This is about URL and redirection in flask                   |
-| database               | This directory includes python scripts for uploading data to database |
-| decisionTree           | This directory includes decision tree and some data          |
-| decisionTree.py        | This includes code for creating decision tree and predict result |
-| testData.xls           | This is used to test decision tree                           |
-| trainingData.xls       | This is used to build decision tree                          |
-| export                 | This directory includes python script for exporting structured files |
-| phones.jsonld          | JSON-LD file for phones                                      |
-| phones.xml             | XML file for phones                                          |
-| scraping               | This directory includes python script for scraping data from website |
-| dataCleaning.py:       |                                                              |
-| dataCleaning_range.py: |                                                              |
-| scrapData.py:          |                                                              |
-| scrapURL.py:           |                                                              |
-| utils:                 |                                                              |
-| \_\_init\_\_.py::      |                                                              |
-| askHtml.py:            |                                                              |
-| translate.py:          |                                                              |
-| static                 | This directory includes files for website front end.         |
-| index.css              | This is the search page style                                |
+| File or directory name   | Description                                                  |
+| ------------------------ | ------------------------------------------------------------ |
+| README.md                | It is this document telling you how to use this project      |
+| requirements.txt         | It is mentioned above                                        |
+| wsgi.py                  | It is created for 'flask run'                                |
+| website (Directory)      | This is main directory for web application source code       |
+| \_\_init\_\_.py          | It is used to initialize flask setting like database and csrf |
+| app.py                   | App object for flask is created here                         |
+| forms.py                 | This is used for form to select phone parameters             |
+| functions.py             | This is used to search phones in database                    |
+| models.py                | This is models for phones                                    |
+| routes.py                | This is about URL and redirection in flask                   |
+| database (Directory)     | This directory includes python scripts for uploading data to database |
+| decisionTree (Directory) | This directory includes decision tree and some data          |
+| decisionTree.py          | This includes code for creating decision tree and predict result |
+| testData.xls             | This is used to test decision tree                           |
+| trainingData.xls         | This is used to build decision tree                          |
+| export (Directory)       | This directory includes python script for exporting structured files |
+| phones.jsonld            | JSON-LD file for phones                                      |
+| phones.xml               | XML file for phones                                          |
+| scraping (Directory)     | This directory includes python script for scraping data from website |
+| dataCleaning.py:         |                                                              |
+| dataCleaning_range.py:   |                                                              |
+| scrapData.py:            |                                                              |
+| scrapURL.py:             |                                                              |
+| utils:                   |                                                              |
+| \_\_init\_\_.py::        |                                                              |
+| askHtml.py:              |                                                              |
+| translate.py:            |                                                              |
+| static (Directory)       | This directory includes files for website front end.         |
+| index.css                | This is the search page style                                |
+| index.html               | This is the search page                                      |
+| result.css               | This is the result page style                                |
+| result.html              | This is the result page                                      |
+
+
 
 
 
