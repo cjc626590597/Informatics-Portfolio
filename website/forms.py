@@ -38,7 +38,7 @@ class IndexForm(FlaskForm):
     )
     phone_resolution = SelectField(
         label='Phone Resolution',
-        choices=[(0,''),(1,'720P'),(2,'1080P'),(3,'2K'),(4,'4K')],
+        choices=[(0,''),(1,'720P'),(2,'1080P'),(3,'2K')],
         default=1,
         coerce=int
     )
@@ -57,14 +57,14 @@ class IndexForm(FlaskForm):
     )
     phone_RAM_capacity = SelectField(
         label='Phone Random Access Memory',
-        choices=[(0,''),(1,'2GB'),(2,'3GB'),(3,'4GB'),(4,'6GB'),(5,'8GB'),(6,'12GB')],
-        default=5,
+        choices=[(0,''),(1,'6GB'),(2,'8GB'),(3,'12GB')],
+        default=2,
         coerce=int
     )
     phone_ROM_capacity = SelectField(
         label='Phone Read Only Memory',
-        choices=[(0,''),(1,'32GB'),(2,'64GB'),(3,'128GB'),(4,'256GB'),(5,'512GB')],
-        default=3,
+        choices=[(0,''),(1,'64GB'),(2,'128GB'),(3,'256GB')],
+        default=2,
         coerce=int
     )
     phone_battery_capacity = SelectField(

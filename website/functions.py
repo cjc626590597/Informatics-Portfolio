@@ -2,7 +2,7 @@ import urllib.request,urllib.error
 from website.models import all_data
 from flask_sqlalchemy import SQLAlchemy
 
-#根据条件检索数据库
+
 def Search(value):
     for i in range(len(value)):
         if value[i] != 0:
@@ -18,16 +18,16 @@ def Search(value):
                 if value[i] == '1':
                     PSmin = 2.0
                     PSmax = 3.0
-                elif value[i] == '2':
+                if value[i] == '2':
                     PSmin = 4.0
                     PSmax = 5.0
-                elif value[i] == '3':
+                if value[i] == '3':
                     PSmin = 5.0
                     PSmax = 6.0
-                elif value[i] == '4':
+                if value[i] == '4':
                     PSmin = 6.0
                     PSmax = 7.0
-                else:
+                if value[i] == '5':
                     PSmin = 7.0
                     PSmax = 8.0
             if i == 3:
@@ -94,8 +94,6 @@ def Search(value):
                     PR = '1080P'
                 if value[i] == '3':
                     PR = '2k'
-                if value[i] == '4':
-                    PR = '4K'
             if i == 5:
                 if value[i] == '1':
                     PFmin = 1.0
@@ -131,28 +129,18 @@ def Search(value):
                     PKN = 8
             if i == 7:
                 if value[i] == '1':
-                    PRAM  = 2
-                if value[i] == '2':
-                    PRAM  = 3
-                if value[i] == '3':
-                    PRAM  = 4
-                if value[i] == '4':
                     PRAM  = 6
-                if value[i] == '5':
+                if value[i] == '2':
                     PRAM  = 8
-                if value[i] == '6':
+                if value[i] == '3':
                     PRAM  = 12
             if i == 8:
                 if value[i] == '1':
-                    PROM = 32
-                if value[i] == '2':
                     PROM = 64
-                if value[i] == '3':
+                if value[i] == '2':
                     PROM = 128
-                if value[i] == '4':
+                if value[i] == '3':
                     PROM = 256
-                if value[i] == '5':
-                    PROM = 512
             if i == 9:
                 PBCmin = int(value[i]) * 1000
                 PBCmax = (int(value[i])  + 1) * 1000
