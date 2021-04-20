@@ -185,7 +185,7 @@ Informatics-Portfolio
 | utils (Directory)             | This directory includes common functions |
 | askHtml.py:              | This is a function used to scrap html content of a website |
 | data (Directory)          | This directory includes scraped data |
-| URLs.xls | This is a function used to scrap html content of a website |
+| URLs.xls | This is an example of scraped URLs |
 | firstData.xls | This is an example of scraped parameters of 9 phones         |
 | secondData.xls | This is an example of scraped phones parameters after first data cleaning |
 | lastData.xls | This is an example of scraped phones parameters after second data cleaning |
