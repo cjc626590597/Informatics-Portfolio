@@ -53,9 +53,11 @@ Go to 'website/scraping' in command line.
 
 If you want to scrap URLs of all phones, execute python script 'scrapURL.py' and a new excel file 'URLs.xls' including all phone URLs is created. 
 
-If you want to scrap required parameters  of all phones, execute python script 'scrapData.py' and a new excel file including all phone parameters is created. 
+If you want to scrap required parameters  of all phones, execute python script 'scrapData.py' and a new excel file named 'firstData.xls' including all phone parameters is created. 
 
-If you want to clean the phone data, execute python script 'dataCleaning.py' and then 'dataCleaning_range.py' to remove the characters not required of excel. 
+If you want to clean the phone data, execute python script 'dataCleaning.py' and a new excel file named 'secondData.xls' including cleaned data is created. 
+
+If you want to further clean the phone data to remove the characters not required, execute python script 'dataCleaning_range.py' and a new excel file named 'lastData.xls'.
 
 
 
@@ -133,6 +135,11 @@ Informatics-Portfolio
         |   |-- scrapURL.py
         |   |-- utils
         |       |-- askHtml.py
+        |   |-- data
+        |       |-- URLs.xls
+        |       |-- firstData.xls
+        |       |-- sencondData.xls
+        |       |-- lastData.xls
         |-- static
         |   |-- Image
         |   |   |-- left.png
@@ -177,6 +184,11 @@ Informatics-Portfolio
 | scrapURL.py:             | This is used to scrap URLs of all phones                     |
 | utils (Directory)             | This directory includes common functions |
 | askHtml.py:              | This is a function used to scrap html content of a website |
+| data (Directory)          | This directory includes scraped data |
+| URLs.xls | This is a function used to scrap html content of a website |
+| firstData.xls | This is an example of scraped parameters of 9 phones         |
+| secondData.xls | This is an example of scraped phones parameters after first data cleaning |
+| lastData.xls | This is an example of scraped phones parameters after second data cleaning |
 | static (Directory)       | This directory includes files for website front end.         |
 | index.css                | This is the search page style                                |
 | index.html               | This is the search page                                      |
