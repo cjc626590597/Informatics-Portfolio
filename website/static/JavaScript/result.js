@@ -1,5 +1,6 @@
-int i = 0;
-int len = len(data);
+var i = 0;
+var data = {{ data }};
+var len = data.length;
 window.onload = function(){
     var lb = document.getElementById("left");
     var rb = document.getElementById("right");
@@ -20,7 +21,7 @@ window.onload = function(){
     var type = document.getElementById("type");
     lb.onclick = function(){
     	if(i == 0)
-    		i = l;
+    		i = len;
     	else
     		i -= 1;
         name.innerHTML = data[i].Phone_name;
@@ -41,7 +42,7 @@ window.onload = function(){
         type.innerHTML = data[i].Phone_target_group;
     }
     rb.onclick = function(){
-    	if(i == l-1)
+    	if(i == len-1)
     		i = 0;
     	else
     		i += 1;
@@ -63,3 +64,18 @@ window.onload = function(){
         type.innerHTML = data[i].Phone_target_group;
     }
 }
+//name.innerHTML = {{data[i].Phone_name}};
+//        price.innerHTML = {{data[i].Phone_price}};
+//        factory.innerHTML = {{data[i].Phone_factory_system_kernel}};
+//        screen.innerHTML = {{data[i].Phone_screen_size}};
+//        operate.innerHTML = {{data[i].Phone_OS}};
+//        resolution.innerHTML = {{data[i].Phone_resolution}};
+//        frequency.innerHTML = {{data[i].Phone_frequency}};
+//        kernel.innerHTML = {{data[i].Phone_kernel_num}};
+//        RAM.innerHTML = {{data[i].Phone_RAM_capacity}};
+//        ROM.innerHTML = {{data[i].Phone_ROM_capacity}};
+//        battery.innerHTML = {{data[i].Phone_battery_capacity}};
+//        rear.innerHTML = {{data[i].Phone_rear_camera}};
+//        front.innerHTML = {{data[i].Phone_front_camera}};
+//        document.getElementById("url").src={{data[i].Phone_pic_URL}};
+//        brand.innerHTML = {{data[i].Phone_brand}};

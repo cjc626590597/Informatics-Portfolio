@@ -34,5 +34,11 @@ def index():
 @app.route('/result')
 def result():
     data = Search(value)
+<<<<<<< Updated upstream
     print(data)
     return render_template('result.html', data=data)
+=======
+    return render_template('result.html',data=data)
+
+
+>>>>>>> Stashed changes

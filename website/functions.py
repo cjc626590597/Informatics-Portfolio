@@ -207,14 +207,14 @@ def Search(value):
                 if value[i] == '11':
                     PFC = 32
 
-    data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
-                                 all_data.Phone_factory_system_kernel == FS, all_data.Phone_screen_size >= PSmin,
-                                 all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
-                                 all_data.Phone_resolution == PR, all_data.Phone_frequency >= PFmin,
-                                 all_data.Phone_frequency <= PFmax, all_data.Phone_kernel_num == PKN,
-                                 all_data.Phone_RAM_capacity == PRAM, all_data.Phone_ROM_capacity == PROM,
-                                 all_data.Phone_battery_capacity >= PBCmin, all_data.Phone_battery_capacity <= PBCmax,
-                                 all_data.Phone_rear_camera == PRC, all_data.Phone_front_camera == PFC).all()
+    # data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
+    #                              all_data.Phone_factory_system_kernel == FS, all_data.Phone_screen_size >= PSmin,
+    #                              all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
+    #                              all_data.Phone_resolution == PR, all_data.Phone_frequency >= PFmin,
+    #                              all_data.Phone_frequency <= PFmax, all_data.Phone_kernel_num == PKN,
+    #                              all_data.Phone_RAM_capacity == PRAM, all_data.Phone_ROM_capacity == PROM,
+    #                              all_data.Phone_battery_capacity >= PBCmin, all_data.Phone_battery_capacity <= PBCmax,
+    #                              all_data.Phone_rear_camera == PRC, all_data.Phone_front_camera == PFC).all()
     data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max).all()
     print(data)
     return data
