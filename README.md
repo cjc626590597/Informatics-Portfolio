@@ -1,0 +1,234 @@
+# Mobile Phone Recommendation Web Application
+
+
+
+
+
+## About
+
+This project is intended to build a mobile phone recommendation web application. This web application recommend mobile phone to users in terms of the mobile phone parameters set by users. However, although some mobile phones have the same parameters, they may still have different usages due to some other factors. In order to make users buy more suitable mobile phones, this web application uses decision tree to analyze the usage ('Game', 'Business', 'Photography', 'Multi-purpose' & 'None') of mobile phones. This web application will show both mobile phone parameters and their usages to give users better idea to buy more suitable mobile phones.
+
+
+
+
+
+## Environment Requirements
+
+Python version: Python 3.8
+
+Operating system: Windows 10 (64 bit)
+
+Libraries (This is included in 'requirements.txt') :
+
+Install following libraries manually
+
+Or 
+
+Use command 'pip3 install -r requirements.txt' in project root directory to install.
+
+```python
+click==7.1.2
+Flask==1.1.2
+itsdangerous==1.1.0
+Jinja2==2.11.3
+MarkupSafe==1.1.1
+pyparsing==2.4.7
+python-dateutil==2.8.1
+six==1.15.0
+Werkzeug==0.16.0
+Flask-MySQL==1.4.0
+Flask-SQLAlchemy==2.4.4
+Flask-WTF==0.14.2
+SQLAlchemy==1.3.6
+WTForms==2.2.1
+beautifulsoup4==4.9.1
+bs4==0.0.1
+soupsieve==2.0.1
+numpy~=1.20.2
+```
+
+
+
+
+
+## How to use
+
+### 1. Scrape (This is a command line operate)
+
+
+
+
+
+### 2. Upload Data (This is a command line operate)
+
+Move excel files from 'scraping' directory.
+
+Go to 'website/database' in command line.
+
+If you want to new phones to database, modify the name of excel file to 'newData.xls' and execute python script 'uploadNewData.py'. 
+
+If you want to add data for training decision tree, add data in new excel file to 'decisionTree/Data/trainingData.xls'. 
+
+If you want to add data for testing decision tree, add data in new excel file to 'decisionTree/Data/testingData.xls'. 
+
+
+
+### 3. Run Website (This is a command line operate)
+
+Go to root directory of this project in command line and run 'flask run'.
+
+Open http://127.0.0.1:5000/ in browser.
+
+
+
+### 4. Choose phone parameters (This is GUI operate)
+
+Open http://127.0.0.1:5000/ in browser.
+
+Choose phone parameters via drop down box and click 'Search' button.
+
+
+
+### 5. Export Structured Files (This is GUI operate)
+
+Click 'Export XML' button or 'Export JSON-LD' button to export structured file.
+
+Choose directory to save structured file in saving window.
+
+
+
+
+
+## Directory Structure
+
+```
+Informatics-Portfolio
+|-- Project
+    |-- README.md
+    |-- requirements.txt
+    |-- wsgi.py
+    |-- website
+        |-- __init__.py
+        |-- app.py
+        |-- forms.py
+        |-- functions.py
+        |-- models.py
+        |-- routes.py
+        |-- database
+        |   |-- models.py
+        |   |-- uploadNewData.py
+        |   |-- uploadTestData.py
+        |   |-- uploadTrainingData.py
+        |-- decisionTree
+        |   |-- decisionTree.py
+        |   |-- data
+        |       |-- testData.xls
+        |       |-- trainingData.xls
+        |-- export
+        |   |-- export.py
+        |   |-- phones.jsonld
+        |   |-- phones.xml
+        |-- scraping
+        |   |-- dataCleaning.py
+        |   |-- dataCleaning_range.py
+        |   |-- scrapData.py
+        |   |-- scrapURL.py
+        |   |-- utils
+        |       |-- __init__.py
+        |       |-- askHtml.py
+        |       |-- translate.py
+        |-- static
+        |   |-- Image
+        |   |   |-- left.png
+        |   |   |-- line.png
+        |   |   |-- phone.png
+        |   |   |-- right.png
+        |   |-- JavaScript
+        |   |   |-- result.js
+        |   |-- Stylesheets
+        |       |-- index.css
+        |       |-- result.css
+        |-- templates
+            |-- index.html
+            |-- result.html
+            |-- text.html
+```
+
+README.md: it is this document telling you how to use this project
+
+requirements.txt: it is mentioned above
+
+wsgi.py: it is created for 'flask run'
+
+website: this is main directory for web application source code
+
+\_\_init\_\_.py: it is used to initialize flask setting like database and csrf
+
+app.py: app object for flask is created here
+
+forms.py: this is used for form to select phone parameters
+
+functions.py: this is used to search phones in database
+
+models.py: this is models for phones
+
+routes.py: this is about URL and redirection in flask
+
+database: this directory includes python scripts for uploading data to database
+
+decisionTree: this directory includes decision tree and some data
+
+decisionTree.py: this includes code for creating decision tree and predict result
+
+testData.xls: this is used to test decision tree
+
+trainingData.xls: this is used to build decision tree
+
+export: this directory includes python script for exporting structured files
+
+phones.jsonld: JSON-LD file for phones
+
+phones.xml: XML file for phones
+
+scraping: this directory includes python script for scraping data from website
+
+dataCleaning.py: 
+
+dataCleaning_range.py: 
+
+scrapData.py: 
+
+scrapURL.py: 
+
+utils: 
+
+\_\_init\_\_.py:: 
+
+askHtml.py: 
+
+translate.py: 
+
+static: this directory includes files for website front end.
+
+index.css: this is the search page style
+
+index.html: this is the search page
+
+result.css: this is the result page style
+
+result.html: this is the result page
+
+
+
+
+
+## Authors
+
+| Student ID | Student Name  |
+| ---------- | ------------- |
+| 2086697    | Yongyi Wu     |
+| 2086698    | Jingyi Zhang  |
+| 2096406    | Yunlong Feng  |
+| 2097255    | Chengtian He  |
+| 2097505    | Juncheng Chen |
+
