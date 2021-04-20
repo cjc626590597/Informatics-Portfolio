@@ -49,7 +49,13 @@ numpy~=1.20.2
 
 ### 1. Scrape (This is a command line operate)
 
+Go to 'website/scraping' in command line.
 
+If you want to scrap URLs of all phones, execute python script 'scrapURL.py' and a new excel file 'URLs.xls' including all phone URLs is created. 
+
+If you want to scrap required parameters  of all phones, execute python script 'scrapData.py' and a new excel file including all phone parameters is created. 
+
+If you want to clean the phone data, execute python script 'dataCleaning.py' and then 'dataCleaning_range.py' to remove the characters not required of excel. 
 
 
 
@@ -126,9 +132,7 @@ Informatics-Portfolio
         |   |-- scrapData.py
         |   |-- scrapURL.py
         |   |-- utils
-        |       |-- __init__.py
         |       |-- askHtml.py
-        |       |-- translate.py
         |-- static
         |   |-- Image
         |   |   |-- left.png
@@ -167,14 +171,12 @@ Informatics-Portfolio
 | phones.jsonld            | JSON-LD file for phones                                      |
 | phones.xml               | XML file for phones                                          |
 | scraping (Directory)     | This directory includes python script for scraping data from website |
-| dataCleaning.py:         |                                                              |
-| dataCleaning_range.py:   |                                                              |
-| scrapData.py:            |                                                              |
-| scrapURL.py:             |                                                              |
-| utils:                   |                                                              |
-| \_\_init\_\_.py::        |                                                              |
-| askHtml.py:              |                                                              |
-| translate.py:            |                                                              |
+| dataCleaning.py:         | This is used to clean the phone data  |
+| dataCleaning_range.py:   | This is used to further clean the phone data |
+| scrapData.py:            | This is used to scrap parameters of all phones |
+| scrapURL.py:             | This is used to scrap URLs of all phones                     |
+| utils (Directory)             | This directory includes common functions |
+| askHtml.py:              | This is a function used to scrap html content of a website |
 | static (Directory)       | This directory includes files for website front end.         |
 | index.css                | This is the search page style                                |
 | index.html               | This is the search page                                      |
