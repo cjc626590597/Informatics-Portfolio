@@ -35,9 +35,12 @@ def index():
 def result():
     data = Search(value)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     print(data)
     return render_template('result.html', data=data)
 =======
+=======
+>>>>>>> Stashed changes
     return render_template('result.html',data=data)
 
 
