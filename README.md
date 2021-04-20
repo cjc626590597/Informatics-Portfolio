@@ -57,7 +57,7 @@ If you want to scrap required parameters  of all phones, execute python script '
 
 If you want to clean the phone data, execute python script 'dataCleaning.py' and a new excel file named 'secondData.xls' including cleaned data is created. 
 
-If you want to further clean the phone data to remove the characters not required, execute python script 'dataCleaning_range.py' and a new excel file named 'lastData.xls'.
+If you want to further clean the phone data to remove the characters not required, execute python script 'dataCleaning_range.py' and a new excel file named 'lastData.xls' is created.
 
 
 
