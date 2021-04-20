@@ -6,7 +6,6 @@ from website.functions import Search
 
 value = []
 
-
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
@@ -37,6 +36,7 @@ def result():
     form = IndexForm()
     data = Search(value)
     dataList = []
+    stringList = []
     for item in data:
         tmp = [item.Phone_id,
                item.Phone_name,
@@ -56,6 +56,12 @@ def result():
                item.Phone_brand,
                item.Phone_target_group]
         dataList.append(tmp)
+        if item.Phone_price <= 2000:
+            stringList.append("Cheap")
+        elif item.Phone_price <= 5000:
+            stringList.append("Medium")
+        elif item.Phone_price <= 20000:
+            stringList.append("Expensive")
     if request.method == 'POST':
         if 'XML' in request.form:
             exportXML(dataList)
@@ -63,7 +69,9 @@ def result():
         elif 'JSONLD' in request.form:
             exportJSON_LD(dataList)
             return redirect(url_for('downloadJSONLD'))
-    return render_template('result.html', data=dataList, form=form)
+    value.clear()
+    print(stringList[0])
+    return render_template('result.html', data=dataList, form=form, string=stringList)
 
 
 @app.route('/downloadXML', methods=['GET', 'POST'])
