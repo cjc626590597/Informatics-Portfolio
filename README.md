@@ -2,13 +2,9 @@
 
 
 
-
-
 ## About
 
 This project is intended to build a mobile phone recommendation web application. This web application recommend mobile phone to users in terms of the mobile phone parameters set by users. However, although some mobile phones have the same parameters, they may still have different usages due to some other factors. In order to make users buy more suitable mobile phones, this web application uses decision tree to analyze the usage ('Game', 'Business', 'Photography', 'Multi-purpose' & 'None') of mobile phones. This web application will show both mobile phone parameters and their usages to give users better idea to buy more suitable mobile phones.
-
-
 
 
 
@@ -46,8 +42,6 @@ bs4==0.0.1
 soupsieve==2.0.1
 numpy~=1.20.2
 ```
-
-
 
 
 
@@ -94,8 +88,6 @@ Choose phone parameters via drop down box and click 'Search' button.
 Click 'Export XML' button or 'Export JSON-LD' button to export structured file.
 
 Choose directory to save structured file in saving window.
-
-
 
 
 
@@ -154,71 +146,37 @@ Informatics-Portfolio
             |-- text.html
 ```
 
-README.md: it is this document telling you how to use this project
-
-requirements.txt: it is mentioned above
-
-wsgi.py: it is created for 'flask run'
-
-website: this is main directory for web application source code
-
-\_\_init\_\_.py: it is used to initialize flask setting like database and csrf
-
-app.py: app object for flask is created here
-
-forms.py: this is used for form to select phone parameters
-
-functions.py: this is used to search phones in database
-
-models.py: this is models for phones
-
-routes.py: this is about URL and redirection in flask
-
-database: this directory includes python scripts for uploading data to database
-
-decisionTree: this directory includes decision tree and some data
-
-decisionTree.py: this includes code for creating decision tree and predict result
-
-testData.xls: this is used to test decision tree
-
-trainingData.xls: this is used to build decision tree
-
-export: this directory includes python script for exporting structured files
-
-phones.jsonld: JSON-LD file for phones
-
-phones.xml: XML file for phones
-
-scraping: this directory includes python script for scraping data from website
-
-dataCleaning.py: 
-
-dataCleaning_range.py: 
-
-scrapData.py: 
-
-scrapURL.py: 
-
-utils: 
-
-\_\_init\_\_.py:: 
-
-askHtml.py: 
-
-translate.py: 
-
-static: this directory includes files for website front end.
-
-index.css: this is the search page style
-
-index.html: this is the search page
-
-result.css: this is the result page style
-
-result.html: this is the result page
-
-
+| File or directory name | Description                                                  |
+| ---------------------- | ------------------------------------------------------------ |
+| README.md              | It is this document telling you how to use this project      |
+| requirements.txt       | It is mentioned above                                        |
+| wsgi.py                | It is created for 'flask run'                                |
+| website                | This is main directory for web application source code       |
+| \_\_init\_\_.py        | It is used to initialize flask setting like database and csrf |
+| app.py                 | App object for flask is created here                         |
+| forms.py               | This is used for form to select phone parameters             |
+| functions.py           | This is used to search phones in database                    |
+| models.py              | This is models for phones                                    |
+| routes.py              | This is about URL and redirection in flask                   |
+| database               | This directory includes python scripts for uploading data to database |
+| decisionTree           | This directory includes decision tree and some data          |
+| decisionTree.py        | This includes code for creating decision tree and predict result |
+| testData.xls           | This is used to test decision tree                           |
+| trainingData.xls       | This is used to build decision tree                          |
+| export                 | This directory includes python script for exporting structured files |
+| phones.jsonld          | JSON-LD file for phones                                      |
+| phones.xml             | XML file for phones                                          |
+| scraping               | This directory includes python script for scraping data from website |
+| dataCleaning.py:       |                                                              |
+| dataCleaning_range.py: |                                                              |
+| scrapData.py:          |                                                              |
+| scrapURL.py:           |                                                              |
+| utils:                 |                                                              |
+| \_\_init\_\_.py::      |                                                              |
+| askHtml.py:            |                                                              |
+| translate.py:          |                                                              |
+| static                 | This directory includes files for website front end.         |
+| index.css              | This is the search page style                                |
 
 
 
