@@ -10,6 +10,7 @@
     var i = 0;
     var data = {{ data|safe }};
     var length_ = data.length
+    var stringlist = {{string|safe}}
     var lb = document.getElementById("left");
     var rb = document.getElementById("right");
     var name_
@@ -47,7 +48,7 @@
         type = document.getElementById("type");
 
         name_.innerHTML = data[i][1];
-        price.innerHTML = data[i][2];
+        price.innerHTML = data[i][2] +' ('+ stringlist[i] + ')';
         factory.innerHTML = data[i][3];
         screen.innerHTML = data[i][4];
         operate.innerHTML = data[i][5];
@@ -69,7 +70,7 @@
             else
                 i -= 1;
             name_.innerHTML = data[i][1];
-            price.innerHTML = data[i][2];
+            price.innerHTML = data[i][2] + ' ('+ stringlist[i] + ')';
             factory.innerHTML = data[i][3];
             screen.innerHTML = data[i][4];
             operate.innerHTML = data[i][5];
@@ -91,7 +92,7 @@
             else
                 i += 1;
             name_.innerHTML = data[i][1];
-            price.innerHTML = data[i][2];
+            price.innerHTML = data[i][2] + ' ('+ stringlist[i] + ')';
             factory.innerHTML = data[i][3];
             screen.innerHTML = data[i][4];
             operate.innerHTML = data[i][5];
@@ -124,8 +125,8 @@
         <td>Brand</td>
         <td><p id="brand">{{ data[0].Phone_brand }}</p></td>
         <td width="100px"></td>
-        <td>Price</td>
-        <td><p id="price">{{ data[0].Phone_price }}</p></td>
+        <td>Battery Capacity</td>
+        <td><p id="battery">{{ data[0].Phone_battery_capacity }}</p></td>
     </tr>
     <tr>
         <td>Screen Size</td>
@@ -163,9 +164,10 @@
         <td><p id="front">{{ data[0].Phone_front_camera }}</p></td>
     </tr>
     <tr>
-        <td>Battery Capacity</td>
-        <td><p id="battery">{{ data[0].Phone_battery_capacity }}</p></td>
+        <td>Price</td>
+        <td><p id="price">{{ data[0].Phone_price }}{{ string[0] }}</p></td>
         <td colspan="4"></td>
+
     </tr>
 </table>
 <img src="{{ url_for('static',filename='Image/Right.png') }}" id="right" class="right">

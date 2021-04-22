@@ -5,7 +5,6 @@ from website.models import all_data
 from flask_sqlalchemy import SQLAlchemy
 
 
-# 根据条件检索数据库
 def Search(value):
     for i in range(len(value)):
         if value[i] != 0:
