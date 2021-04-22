@@ -37,6 +37,8 @@ def result():
     data = Search(value)
     dataList = []
     stringList = []
+    # Use the facet price and terms Cheap,Medium,Expensive in the CV
+    price = ["Cheap", "Medium", "Expensive"]
     for item in data:
         tmp = [item.Phone_id,
                item.Phone_name,
@@ -57,11 +59,11 @@ def result():
                item.Phone_target_group]
         dataList.append(tmp)
         if item.Phone_price <= 2000:
-            stringList.append("Cheap")
+            stringList.append(price[0])
         elif item.Phone_price <= 5000:
-            stringList.append("Medium")
+            stringList.append(price[1])
         elif item.Phone_price <= 20000:
-            stringList.append("Expensive")
+            stringList.append(price[2])
     if request.method == 'POST':
         if 'XML' in request.form:
             exportXML(dataList)
