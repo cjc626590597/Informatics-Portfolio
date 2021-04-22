@@ -23,24 +23,34 @@ Or
 Use command 'pip3 install -r requirements.txt' in project root directory to install.
 
 ```python
+beautifulsoup4==4.9.1
+bs4==0.0.1
+certifi==2020.12.5
+chardet==4.0.0
 click==7.1.2
 Flask==1.1.2
-itsdangerous==1.1.0
-Jinja2==2.11.3
-MarkupSafe==1.1.1
-pyparsing==2.4.7
-python-dateutil==2.8.1
-six==1.15.0
-Werkzeug==0.16.0
 Flask-MySQL==1.4.0
 Flask-SQLAlchemy==2.4.4
 Flask-WTF==0.14.2
-SQLAlchemy==1.3.6
-WTForms==2.2.1
-beautifulsoup4==4.9.1
-bs4==0.0.1
+idna==2.10
+itsdangerous==1.1.0
+Jinja2==2.11.3
+MarkupSafe==1.1.1
+numpy==1.20.2
+pandas==1.2.4
+PyMySQL==1.0.2
+pyparsing==2.4.7
+python-dateutil==2.8.1
+pytz==2021.1
+requests==2.25.1
+six==1.15.0
 soupsieve==2.0.1
-numpy~=1.20.2
+SQLAlchemy==1.3.6
+urllib3==1.26.4
+Werkzeug==0.16.0
+WTForms==2.2.1
+xlrd==2.0.1
+xlwt==1.3.0
 ```
 
 
