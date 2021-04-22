@@ -1,14 +1,14 @@
 <div itemscope itemtype="https://schema.org/Product">
 	<span itemprop="category">mobilePhone</span>
-	<span itemprop="name">OPPO A32(8GB/128GB/ All Netcom ) </span>
+	<span itemprop="name">Huawei Mate X2(8GB/512GB/ All Netcom /5G version)  </span>
 	<div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-		<span itemprop="price">1499.00</span>
+		<span itemprop="price">6349.00</span>
 		<span itemprop="priceCurrency">CNY</span>
 	</div>
-	<span itemprop="size">6.50 inch</span>
-	<span itemprop="image">https://pro-fd.zol-img.com.cn/t_s300x300c5/g6/M00/02/01/ChMkKV9Z_KeIBXZUAAC-BeJRWEUAACIDwEB6AoAAL4d919.jpg</span>
+	<span itemprop="size">8.00 inch</span>
+	<span itemprop="image">https://pro-fd.zol-img.com.cn/t_s300x300c5/g6/M00/00/0E/ChMkKmA0qkmIF9NhAADIPNkHeuoAAKVwwOu6msAAMhU962.jpg</span>
 	<div itemprop="brand" itemscope itemtype="https://schema.org/Brand">
-		<span itemprop="name">OPPO</span>
+		<span itemprop="name">Huawei</span>
 	</div>
 	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
 		<span itemprop="name">System Kernel</span>
@@ -16,15 +16,15 @@
 	</div>
 	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
 		<span itemprop="name">Operating System</span>
-		<span itemprop="value">ColorOS</span>
+		<span itemprop="value">EMUI</span>
 	</div>
 	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
 		<span itemprop="name">Resolution</span>
-		<span itemprop="value">720P</span>
+		<span itemprop="value">4K</span>
 	</div>
 	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
 		<span itemprop="name">Processor frequency</span>
-		<span itemprop="value">1.80</span>
+		<span itemprop="value">2.37</span>
 		<meta itemprop="unitCode" content="A86">Ghz
 	</div>
 	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
@@ -38,26 +38,26 @@
 	</div>
 	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
 		<span itemprop="name">ROM capacity</span>
-		<span itemprop="value">128</span>
+		<span itemprop="value">512</span>
 		<meta itemprop="unitCode" content="E34">GB
 	</div>
 	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
 		<span itemprop="name">Battery capacity</span>
-		<span itemprop="value">5000</span>
+		<span itemprop="value">4500</span>
 		<meta itemprop="unitCode" content="MAH">mAh
 	</div>
 	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
 		<span itemprop="name">Rear camera pixels</span>
-		<span itemprop="value">13</span>
+		<span itemprop="value">50</span>
 		<meta itemprop="unitCode" content="E38">megapixel
 	</div>
 	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
 		<span itemprop="name">Front camera pixels</span>
-		<span itemprop="value">8</span>
+		<span itemprop="value">16</span>
 		<meta itemprop="unitCode" content="E38">megapixel
 	</div>
 	<div itemprop="additionalProperty" itemscope itemtype="https://schema.org/PropertyValue">
 		<span itemprop="name">Usage</span>
-		<span itemprop="value">Business</span>
+		<span itemprop="value">Multi-purpose</span>
 	</div>
 </div>

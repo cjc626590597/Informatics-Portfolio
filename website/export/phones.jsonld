@@ -3,17 +3,17 @@
 	"@context": "https://schema.org",
 	"@type": "Product",
 	"category": "MobilePhone",
-	"name": "OPPO A32(8GB/128GB/ All Netcom )",
+	"name": "Huawei Mate X2(8GB/512GB/ All Netcom /5G version)  ",
 	"offers": {
 		"@type": "Offer",
-		"price": "1499.00",
+		"price": "6349.00",
 		"priceCurrency": "CNY"
 	},
-	"size": "6.50 inch",
-	"image": "https://pro-fd.zol-img.com.cn/t_s300x300c5/g6/M00/02/01/ChMkKV9Z_KeIBXZUAAC-BeJRWEUAACIDwEB6AoAAL4d919.jpg",
+	"size": "8.00 inch",
+	"image": "https://pro-fd.zol-img.com.cn/t_s300x300c5/g6/M00/00/0E/ChMkKmA0qkmIF9NhAADIPNkHeuoAAKVwwOu6msAAMhU962.jpg",
 	"brand": {
 		"@type": "Brand",
-		"name": "OPPO"
+		"name": "Huawei"
 	},
 	"additionalProperty": [
 		{
@@ -24,17 +24,17 @@
 		{
 			"@type": "PropertyValue",
 			"name": "Operating System",
-			"value": "Color"
+			"value": "EMUI"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "Resolution",
-			"value": "720P"
+			"value": "4K"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "Processor frequency",
-			"value": "1.80",
+			"value": "2.37",
 			"unitCode": "Ghz"
 		},
 		{
@@ -51,113 +51,31 @@
 		{
 			"@type": "PropertyValue",
 			"name": "ROM capacity",
-			"value": "128",
+			"value": "512",
 			"unitCode": "GB"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "Battery capacity",
-			"value": "5000",
+			"value": "4500",
 			"unitCode": "mAh"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "Rear camera pixels",
-			"value": "13",
+			"value": "50",
 			"unitCode": "megapixel"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "Front camera pixels",
-			"value": "8",
+			"value": "16",
 			"unitCode": "megapixel"
 		},
 		{
 			"@type": "PropertyValue",
 			"name": "Usage",
-			"value": "Business"
-		}
-	]
-}
-</script>
-<script type="application/ld+json">
-{
-	"@context": "https://schema.org",
-	"@type": "Product",
-	"category": "MobilePhone",
-	"name": "Redmi 8A(3GB/32GB/ All Netcom )",
-	"offers": {
-		"@type": "Offer",
-		"price": "599.00",
-		"priceCurrency": "CNY"
-	},
-	"size": "6.22 inch",
-	"image": "https://pro-fd.zol-img.com.cn/t_s300x300c5/g1/M09/00/08/ChMljV2kSqWIUHBLAACcAbMG0LMAAP92QKihe4AAJwZ139.jpg",
-	"brand": {
-		"@type": "Brand",
-		"name": "Redmi"
-	},
-	"additionalProperty": [
-		{
-			"@type": "PropertyValue",
-			"name": "System Kernel",
-			"value": "MIUI"
-		},
-		{
-			"@type": "PropertyValue",
-			"name": "Operating System",
-			"value": "MIUI"
-		},
-		{
-			"@type": "PropertyValue",
-			"name": "Resolution",
-			"value": "720P"
-		},
-		{
-			"@type": "PropertyValue",
-			"name": "Processor frequency",
-			"value": "2.00",
-			"unitCode": "Ghz"
-		},
-		{
-			"@type": "PropertyValue",
-			"name": "Kernel number",
-			"value": "8"
-		},
-		{
-			"@type": "PropertyValue",
-			"name": "RAM capacity",
-			"value": "3",
-			"unitCode": "GB"
-		},
-		{
-			"@type": "PropertyValue",
-			"name": "ROM capacity",
-			"value": "32",
-			"unitCode": "GB"
-		},
-		{
-			"@type": "PropertyValue",
-			"name": "Battery capacity",
-			"value": "5000",
-			"unitCode": "mAh"
-		},
-		{
-			"@type": "PropertyValue",
-			"name": "Rear camera pixels",
-			"value": "12",
-			"unitCode": "megapixel"
-		},
-		{
-			"@type": "PropertyValue",
-			"name": "Front camera pixels",
-			"value": "8",
-			"unitCode": "megapixel"
-		},
-		{
-			"@type": "PropertyValue",
-			"name": "Usage",
-			"value": "Business"
+			"value": "Multi-purpose"
 		}
 	]
 }
