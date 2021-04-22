@@ -5,7 +5,6 @@ from website.models import all_data
 from flask_sqlalchemy import SQLAlchemy
 
 
-# 根据条件检索数据库
 def Search(value):
     for i in range(len(value)):
         if value[i] != 0:
@@ -13,6 +12,7 @@ def Search(value):
                 min = (int(value[0]) - 1) * 1000
                 max = int(value[0]) * 1000
             if i == 1:
+                # Use the facet factory system kernel and terms IOS and Android in CV.
                 if value[i] == '1':
                     FS = 'IOS'
                 else:
