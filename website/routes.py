@@ -9,6 +9,7 @@ value = []
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
+    value.clear()
     form = IndexForm()
     if request.method == 'POST':
         if (form.validate_on_submit()):
@@ -71,7 +72,6 @@ def result():
         elif 'JSONLD' in request.form:
             exportJSON_LD(dataList)
             return redirect(url_for('downloadJSONLD'))
-    value.clear()
     print(stringList[0])
     return render_template('result.html', data=dataList, form=form, string=stringList)
 
