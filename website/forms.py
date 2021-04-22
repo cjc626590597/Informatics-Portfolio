@@ -11,6 +11,7 @@ class IndexForm(FlaskForm):
         default = 2,
         coerce=int
     )
+     # Use the facet factory system kernel and terms IOS and Android in CV.
     factory_system = RadioField(
         label='*Factory System kernel',
         validators=[DataRequired('Please select the Factory System')],
