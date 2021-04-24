@@ -7,3 +7,5 @@
 .idea/workspace.xml
 website/.idea/
 venv
+*.xml
+*.xls
