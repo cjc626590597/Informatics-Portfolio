@@ -3,53 +3,178 @@
 <head>
     <meta charset="utf-8">
     <title>Result</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Stylesheets/result.css') }}">
-	<script type="text/javascript" src="{{ url_for('static',filename='JavaScript/result.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='Stylesheets/result.css') }}">
+    {#    <script type="text/javascript" src="{{ url_for('static',filename='JavaScript/result.js') }}"></script>#}
 </head>
+<script>
+    var i = 0;
+    var data = {{ data|safe }};
+    var length_ = data.length
+    var stringlist = {{string|safe}}
+    var lb = document.getElementById("left");
+    var rb = document.getElementById("right");
+    var name_
+    var price
+    var factory
+    var screen
+    var operate
+    var resolution
+    var frequency
+    var kernel
+    var RAM
+    var ROM
+    var battery
+    var rear
+    var front
+    var brand
+    var type
+    window.onload = function () {
+        lb = document.getElementById("left");
+        rb = document.getElementById("right");
+        name_ = document.getElementById("name");
+        price = document.getElementById("price");
+        factory = document.getElementById("factory");
+        screen = document.getElementById("screen");
+        operate = document.getElementById("operate");
+        resolution = document.getElementById("resolution");
+        frequency = document.getElementById("frequency");
+        kernel = document.getElementById("kernel");
+        RAM = document.getElementById("RAM");
+        ROM = document.getElementById("ROM");
+        battery = document.getElementById("battery");
+        rear = document.getElementById("rear");
+        front = document.getElementById("front");
+        brand = document.getElementById("brand");
+        type = document.getElementById("type");
+
+        name_.innerHTML = data[i][1];
+        price.innerHTML = data[i][2] +' ('+ stringlist[i] + ')';
+        factory.innerHTML = data[i][3];
+        screen.innerHTML = data[i][4];
+        operate.innerHTML = data[i][5];
+        resolution.innerHTML = data[i][6];
+        frequency.innerHTML = data[i][7];
+        kernel.innerHTML = data[i][8];
+        RAM.innerHTML = data[i][9];
+        ROM.innerHTML = data[i][10];
+        battery.innerHTML = data[i][11];
+        rear.innerHTML = data[i][12];
+        front.innerHTML = data[i][13];
+        document.getElementById("url").src = data[i][14];
+        brand.innerHTML = data[i][15];
+        type.innerHTML = data[i][16];
+
+        lb.onclick = function () {
+            if (i == 0)
+                i = length_ - 1;
+            else
+                i -= 1;
+            name_.innerHTML = data[i][1];
+            price.innerHTML = data[i][2] + ' ('+ stringlist[i] + ')';
+            factory.innerHTML = data[i][3];
+            screen.innerHTML = data[i][4];
+            operate.innerHTML = data[i][5];
+            resolution.innerHTML = data[i][6];
+            frequency.innerHTML = data[i][7];
+            kernel.innerHTML = data[i][8];
+            RAM.innerHTML = data[i][9];
+            ROM.innerHTML = data[i][10];
+            battery.innerHTML = data[i][11];
+            rear.innerHTML = data[i][12];
+            front.innerHTML = data[i][13];
+            document.getElementById("url").src = data[i][14];
+            brand.innerHTML = data[i][15];
+            type.innerHTML = data[i][16];
+        }
+        rb.onclick = function () {
+            if (i == length_ - 1)
+                i = 0;
+            else
+                i += 1;
+            name_.innerHTML = data[i][1];
+            price.innerHTML = data[i][2] + ' ('+ stringlist[i] + ')';
+            factory.innerHTML = data[i][3];
+            screen.innerHTML = data[i][4];
+            operate.innerHTML = data[i][5];
+            resolution.innerHTML = data[i][6];
+            frequency.innerHTML = data[i][7];
+            kernel.innerHTML = data[i][8];
+            RAM.innerHTML = data[i][9];
+            ROM.innerHTML = data[i][10];
+            battery.innerHTML = data[i][11];
+            rear.innerHTML = data[i][12];
+            front.innerHTML = data[i][13];
+            document.getElementById("url").src = data[i][14];
+            brand.innerHTML = data[i][15];
+            type.innerHTML = data[i][16];
+        }
+    }
+
+</script>
 <body>
-	<div class="predict">Mobile phone category predict: </div><div id="type">{{ data[0].Phone_target_group }}</div>
-	<img src="{{ url_for('static',filename='Image/left.png') }}" id="left" class="left">
-	<img src="{{data[0].Phone_pic_URL}}" class="phone" id="url">
-    <table class="text">
-		<tr>
-			<td>Mobile Phone Name</td><td colspan="4"><p id="name">{{data[0].Phone_name}}</p></td>
-		</tr>
-		<tr>
-			<td>Brand</td><td><p id="brand">{{data[0].Phone_brand}}</p></td>
-			<td width="100px"></td>
-			<td>Price</td><td><p id="price">{{data[0].Phone_price}}</p></td>
-		</tr>
-		<tr>
-			<td>Screen Size</td><td><p id="screen">{{data[0].Phone_screen_size}}</p></td>
-			<td></td>
-			<td>Resolution</td><td><p id="resolution">{{data[0].Phone_resolution}}</p></td>
-		</tr>
-		<tr>
-			<td>Factory System</td><td><p id="factory">{{data[0].Phone_factory_system_kernel}}</p></td>
-			<td></td>
-			<td>Operate System</td><td><p id="operate">{{data[0].Phone_OS}}</p></td>
-		</tr>
-		<tr>
-			<td>Frequency</td><td><p id="frequency">{{data[0].Phone_frequency}}</p></td>
-			<td></td>
-			<td>Kernel Num</td><td><p id="kernel">{{data[0].Phone_kernel_num}}</p></td>
-		</tr>
-		<tr>
-			<td width="200px">Random Access Memory</td><td><p id="RAM">{{data[0].Phone_RAM_capacity}}</p></td>
-			<td></td>
-			<td>Read Only Memory</td><td><p id="ROM">{{data[0].Phone_RAM_capacity}}</p></td>
-		</tr>
-		<tr>
-			<td>Rear Camera</td><td><p id="rear">{{data[0].Phone_rear_camera}}</p></td>
-			<td></td>
-			<td>Front Camera</td><td><p id="front">{{data[0].Phone_front_camera}}</p></td>
-		</tr>
-		<tr>
-			<td>Battery Capacity</td><td><p id="battery">{{data[0].Phone_battery_capacity}}</p></td>
-			<td colspan="4"></td>
-		</tr>
-	</table>
-	<img src="{{ url_for('static',filename='Image/Right.png') }}" id="right" class="right">
-	<input type="submit" value="Print All Result" class="print">
+<div class="predict">Mobile phone category predict:</div>
+<div id="type">{{ data[0].Phone_target_group }}</div>
+<img src="{{ url_for('static',filename='Image/left.png') }}" id="left" class="left">
+<img src="{{ data[0].Phone_pic_URL }}" class="phone" id="url">
+<table class="text">
+    <tr>
+        <td>Mobile Phone Name</td>
+        <td colspan="4"><p id="name">{{ data[0].Phone_name }}</p></td>
+    </tr>
+    <tr>
+        <td>Brand</td>
+        <td><p id="brand">{{ data[0].Phone_brand }}</p></td>
+        <td width="100px"></td>
+        <td>Battery Capacity</td>
+        <td><p id="battery">{{ data[0].Phone_battery_capacity }}</p></td>
+    </tr>
+    <tr>
+        <td>Screen Size</td>
+        <td><p id="screen">{{ data[0].Phone_screen_size }}</p></td>
+        <td></td>
+        <td>Resolution</td>
+        <td><p id="resolution">{{ data[0].Phone_resolution }}</p></td>
+    </tr>
+    <tr>
+        <td>Factory System</td>
+        <td><p id="factory">{{ data[0].Phone_factory_system_kernel }}</p></td>
+        <td></td>
+        <td>Operate System</td>
+        <td><p id="operate">{{ data[0].Phone_OS }}</p></td>
+    </tr>
+    <tr>
+        <td>Frequency</td>
+        <td><p id="frequency">{{ data[0].Phone_frequency }}</p></td>
+        <td></td>
+        <td>Kernel Num</td>
+        <td><p id="kernel">{{ data[0].Phone_kernel_num }}</p></td>
+    </tr>
+    <tr>
+        <td width="200px">Random Access Memory</td>
+        <td><p id="RAM">{{ data[0].Phone_RAM_capacity }}</p></td>
+        <td></td>
+        <td>Read Only Memory</td>
+        <td><p id="ROM">{{ data[0].Phone_RAM_capacity }}</p></td>
+    </tr>
+    <tr>
+        <td>Rear Camera</td>
+        <td><p id="rear">{{ data[0].Phone_rear_camera }}</p></td>
+        <td></td>
+        <td>Front Camera</td>
+        <td><p id="front">{{ data[0].Phone_front_camera }}</p></td>
+    </tr>
+    <tr>
+        <td>Price</td>
+        <td><p id="price">{{ data[0].Phone_price }}{{ string[0] }}</p></td>
+        <td colspan="4"></td>
+
+    </tr>
+</table>
+<img src="{{ url_for('static',filename='Image/Right.png') }}" id="right" class="right">
+<form method="POST">
+    {{ form.csrf_token() }}
+    <input type="submit" name="XML" value="Export XML" class="XML">
+    <input type="submit" name="JSONLD" value="Export JSON-LD" class="JSONLD">
+</form>
 </body>
 </html>

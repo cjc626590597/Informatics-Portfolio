@@ -1,4 +1,6 @@
-import urllib.request,urllib.error
+import urllib.request, urllib.error
+
+from website.decisionTree.decisionTree import retrieveTrainingData, createDecisionTree, predict
 from website.models import all_data
 from flask_sqlalchemy import SQLAlchemy
 
@@ -8,7 +10,7 @@ def Search(value):
         if value[i] != 0:
             if i == 0:
                 min = (int(value[0]) - 1) * 1000
-                max = int(value[0])*1000
+                max = int(value[0]) * 1000
             if i == 1:
                 if value[i] == '1':
                     FS = 'IOS'
@@ -18,16 +20,16 @@ def Search(value):
                 if value[i] == '1':
                     PSmin = 2.0
                     PSmax = 3.0
-                if value[i] == '2':
+                elif value[i] == '2':
                     PSmin = 4.0
                     PSmax = 5.0
-                if value[i] == '3':
+                elif value[i] == '3':
                     PSmin = 5.0
                     PSmax = 6.0
-                if value[i] == '4':
+                elif value[i] == '4':
                     PSmin = 6.0
                     PSmax = 7.0
-                if value[i] == '5':
+                else:
                     PSmin = 7.0
                     PSmax = 8.0
             if i == 3:
@@ -94,6 +96,8 @@ def Search(value):
                     PR = '1080P'
                 if value[i] == '3':
                     PR = '2k'
+                if value[i] == '4':
+                    PR = '4K'
             if i == 5:
                 if value[i] == '1':
                     PFmin = 1.0
@@ -129,21 +133,31 @@ def Search(value):
                     PKN = 8
             if i == 7:
                 if value[i] == '1':
-                    PRAM  = 6
+                    PRAM = 2
                 if value[i] == '2':
-                    PRAM  = 8
+                    PRAM = 3
                 if value[i] == '3':
-                    PRAM  = 12
+                    PRAM = 4
+                if value[i] == '4':
+                    PRAM = 6
+                if value[i] == '5':
+                    PRAM = 8
+                if value[i] == '6':
+                    PRAM = 12
             if i == 8:
                 if value[i] == '1':
-                    PROM = 64
+                    PROM = 32
                 if value[i] == '2':
-                    PROM = 128
+                    PROM = 64
                 if value[i] == '3':
+                    PROM = 128
+                if value[i] == '4':
                     PROM = 256
+                if value[i] == '5':
+                    PROM = 512
             if i == 9:
                 PBCmin = int(value[i]) * 1000
-                PBCmax = (int(value[i])  + 1) * 1000
+                PBCmax = (int(value[i]) + 1) * 1000
             if i == 10:
                 if value[i] == '1':
                     PRC = 2
@@ -207,15 +221,107 @@ def Search(value):
                 if value[i] == '11':
                     PFC = 32
 
-    # data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
-    #                              all_data.Phone_factory_system_kernel == FS, all_data.Phone_screen_size >= PSmin,
-    #                              all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
-    #                              all_data.Phone_resolution == PR, all_data.Phone_frequency >= PFmin,
-    #                              all_data.Phone_frequency <= PFmax, all_data.Phone_kernel_num == PKN,
-    #                              all_data.Phone_RAM_capacity == PRAM, all_data.Phone_ROM_capacity == PROM,
-    #                              all_data.Phone_battery_capacity >= PBCmin, all_data.Phone_battery_capacity <= PBCmax,
-    #                              all_data.Phone_rear_camera == PRC, all_data.Phone_front_camera == PFC).all()
-    data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max).all()
-    print(data)
+    data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
+                                 all_data.Phone_factory_system_kernel == FS, all_data.Phone_screen_size >= PSmin,
+                                 all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
+                                 all_data.Phone_resolution == PR, all_data.Phone_frequency >= PFmin,
+                                 all_data.Phone_frequency <= PFmax, all_data.Phone_kernel_num == PKN,
+                                 all_data.Phone_RAM_capacity == PRAM, all_data.Phone_ROM_capacity == PROM,
+                                 all_data.Phone_battery_capacity >= PBCmin, all_data.Phone_battery_capacity <= PBCmax,
+                                 all_data.Phone_rear_camera == PRC, all_data.Phone_front_camera == PFC).all()
+    length = len(data)
+    if length == 0:
+        data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
+                                     all_data.Phone_factory_system_kernel == FS, all_data.Phone_screen_size >= PSmin,
+                                     all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
+                                     all_data.Phone_resolution == PR, all_data.Phone_frequency >= PFmin,
+                                     all_data.Phone_frequency <= PFmax, all_data.Phone_kernel_num == PKN,
+                                     all_data.Phone_RAM_capacity == PRAM, all_data.Phone_ROM_capacity == PROM,
+                                     all_data.Phone_rear_camera == PRC, all_data.Phone_front_camera == PFC).all()
+        length = len(data)
+        if length == 0:
+            data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
+                                         all_data.Phone_factory_system_kernel == FS,
+                                         all_data.Phone_screen_size >= PSmin,
+                                         all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
+                                         all_data.Phone_resolution == PR, all_data.Phone_frequency >= PFmin,
+                                         all_data.Phone_frequency <= PFmax, all_data.Phone_kernel_num == PKN,
+                                         all_data.Phone_RAM_capacity == PRAM, all_data.Phone_ROM_capacity == PROM).all()
+            length = len(data)
+            if length == 0:
+                data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
+                                             all_data.Phone_factory_system_kernel == FS,
+                                             all_data.Phone_screen_size >= PSmin,
+                                             all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
+                                             all_data.Phone_resolution == PR, all_data.Phone_frequency >= PFmin,
+                                             all_data.Phone_frequency <= PFmax, all_data.Phone_kernel_num == PKN,
+                                             all_data.Phone_RAM_capacity == PRAM).all()
+                length = len(data)
+                if length == 0:
+                    data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
+                                                 all_data.Phone_factory_system_kernel == FS,
+                                                 all_data.Phone_screen_size >= PSmin,
+                                                 all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
+                                                 all_data.Phone_resolution == PR, all_data.Phone_frequency >= PFmin,
+                                                 all_data.Phone_frequency <= PFmax,
+                                                 all_data.Phone_kernel_num == PKN).all()
+                    length = len(data)
+                    if length == 0:
+                        data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
+                                                     all_data.Phone_factory_system_kernel == FS,
+                                                     all_data.Phone_screen_size >= PSmin,
+                                                     all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
+                                                     all_data.Phone_resolution == PR, all_data.Phone_frequency >= PFmin,
+                                                     all_data.Phone_frequency <= PFmax).all()
+                        length = len(data)
+                        if length == 0:
+                            data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
+                                                         all_data.Phone_factory_system_kernel == FS,
+                                                         all_data.Phone_screen_size >= PSmin,
+                                                         all_data.Phone_screen_size <= PSmax, all_data.Phone_OS == POS,
+                                                         all_data.Phone_resolution == PR).all()
+                            length = len(data)
+                            if length == 0:
+                                data = all_data.query.filter(all_data.Phone_price > min, all_data.Phone_price <= max,
+                                                             all_data.Phone_factory_system_kernel == FS,
+                                                             all_data.Phone_screen_size >= PSmin,
+                                                             all_data.Phone_screen_size <= PSmax,
+                                                             all_data.Phone_OS == POS).all()
+                                length = len(data)
+                                if length == 0:
+                                    data = all_data.query.filter(all_data.Phone_price > min,
+                                                                 all_data.Phone_price <= max,
+                                                                 all_data.Phone_factory_system_kernel == FS,
+                                                                 all_data.Phone_screen_size >= PSmin,
+                                                                 all_data.Phone_screen_size <= PSmax).all()
+                                    length = len(data)
+                                    if length == 0:
+                                        data = all_data.query.filter(all_data.Phone_price > min,
+                                                                     all_data.Phone_price <= max,
+                                                                     all_data.Phone_factory_system_kernel == FS).all()
+                                        length = len(data)
+                                        if length == 0:
+                                            data = all_data.query.filter(all_data.Phone_price > min,
+                                                                         all_data.Phone_price <= max).all()
+    # #TODO: data for test
+    # data = all_data.query.filter(all_data.Phone_price > min,
+    #                              all_data.Phone_price <= max).all()
+    _dataSet, _features = retrieveTrainingData()
+    _root = createDecisionTree(_dataSet, _features)
+    for item in data:
+        phone = [item.Phone_price,
+                 item.Phone_factory_system_kernel,
+                 item.Phone_screen_size,
+                 item.Phone_OS,
+                 item.Phone_resolution,
+                 item.Phone_frequency,
+                 item.Phone_kernel_num,
+                 item.Phone_RAM_capacity,
+                 item.Phone_ROM_capacity,
+                 item.Phone_battery_capacity,
+                 item.Phone_rear_camera,
+                 item.Phone_front_camera,
+                 item.Phone_brand]
+        item.Phone_target_group = predict(_root, phone, _features)
+    #print(data)
     return data
-

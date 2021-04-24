@@ -2,7 +2,7 @@ import xlrd
 from __init__ import db
 from website.database.models import traingData
 
-data = xlrd.open_workbook('traingData.xls')
+data = xlrd.open_workbook('trainingData.xls')
 table = data.sheets()[0]
 nrows = table.nrows
 ncols = table.ncols

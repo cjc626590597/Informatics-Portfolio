@@ -1,7 +1,8 @@
+import os
 from math import log
 import pandas as pd
 
-from website.database.models import traingData
+# from website.database.models import traingData
 
 
 class TreeNode():
@@ -25,7 +26,9 @@ def retrieveTrainingData():
     [1]List: features used to classify
     """
     # TODO change this static dataSet to getting data from database
-    file = r'data/trainingData.xls'
+    # file = r'data/trainingData.xls'
+    print(os.getcwd())
+    file = r'website/decisionTree/data/trainingData.xls'
     data = pd.read_excel(file, sheet_name=0)
     data.drop(data.columns[[0, -3]], axis=1, inplace=True)
     data.fillna('', inplace=True)
@@ -38,26 +41,26 @@ def retrieveTrainingData():
     return dataSet, features
 
 
-def retrieveTrainingDataFromDatabase():
-    col_names = traingData.__table__.columns.keys()  # This gets the column names
-    sample_row = traingData.query.first()  # I just query for a random row
-    required_values = {name: getattr(sample_row, name) for name in col_names}
-    feature = (list(required_values.keys()))
-    feature.pop(0)
-    feature.pop(0)
-    feature.pop()
-    feature.pop(-2)
-    dataDB = traingData.query
-    dataList = []
-    for index in range(0, dataDB.count()):
-        item = []
-        for j in range(0, len(feature)):
-            if hasattr(dataDB[index], feature[j]):
-                item.append(getattr(dataDB[index], feature[j]))
-            else:
-                continue
-        dataList.append(item)
-    return dataList, feature
+# def retrieveTrainingDataFromDatabase():
+#     col_names = traingData.__table__.columns.keys()  # This gets the column names
+#     sample_row = traingData.query.first()  # I just query for a random row
+#     required_values = {name: getattr(sample_row, name) for name in col_names}
+#     feature = (list(required_values.keys()))
+#     feature.pop(0)
+#     feature.pop(0)
+#     feature.pop()
+#     feature.pop(-2)
+#     dataDB = traingData.query
+#     dataList = []
+#     for index in range(0, dataDB.count()):
+#         item = []
+#         for j in range(0, len(feature)):
+#             if hasattr(dataDB[index], feature[j]):
+#                 item.append(getattr(dataDB[index], feature[j]))
+#             else:
+#                 continue
+#         dataList.append(item)
+#     return dataList, feature
 
 
 def countLabels(dataSet):
@@ -409,27 +412,27 @@ def traverseTree(root):
             traverseTree(v)
 
 
-if __name__ == '__main__':
-    _dataSet, _features = retrieveTrainingData()
-    _root = createDecisionTree(_dataSet, _features)
-
-    traverseTree(_root)
-    file = r'data/testData.xls'
-    data = pd.read_excel(file, sheet_name=0)
-    correctResult = []
-    tmp = data.values.tolist()
-    for item in tmp:
-        correctResult.append(item[-1])
-    data.drop(data.columns[[0, -3, -1]], axis=1, inplace=True)
-    data.fillna('', inplace=True)
-    data = data.values.tolist()
-    total = len(data)
-    correct = 0.0
-    i = 0
-    for item in data:
-        result = predict(_root, item, _features)
-        # print(result)
-        if result == correctResult[i]:
-            correct += 1
-        i += 1
-    print(100 * correct / total)
+# if __name__ == '__main__':
+#     _dataSet, _features = retrieveTrainingData()
+#     _root = createDecisionTree(_dataSet, _features)
+#
+#     traverseTree(_root)
+#     file = r'data/testData.xls'
+#     data = pd.read_excel(file, sheet_name=0)
+#     correctResult = []
+#     tmp = data.values.tolist()
+#     for item in tmp:
+#         correctResult.append(item[-1])
+#     data.drop(data.columns[[0, -3, -1]], axis=1, inplace=True)
+#     data.fillna('', inplace=True)
+#     data = data.values.tolist()
+#     total = len(data)
+#     correct = 0.0
+#     i = 0
+#     for item in data:
+#         result = predict(_root, item, _features)
+#         # print(result)
+#         if result == correctResult[i]:
+#             correct += 1
+#         i += 1
+#     print(100 * correct / total)
