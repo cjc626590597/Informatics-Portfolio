@@ -1,6 +1,6 @@
-int i = 0;
-int len = len(data);
 window.onload = function(){
+    i = 0;
+    length_ = len(data)
     var lb = document.getElementById("left");
     var rb = document.getElementById("right");
     var name = document.getElementById("name");
@@ -20,7 +20,7 @@ window.onload = function(){
     var type = document.getElementById("type");
     lb.onclick = function(){
     	if(i == 0)
-    		i = l;
+    		i = length_-1;
     	else
     		i -= 1;
         name.innerHTML = data[i].Phone_name;
@@ -41,7 +41,7 @@ window.onload = function(){
         type.innerHTML = data[i].Phone_target_group;
     }
     rb.onclick = function(){
-    	if(i == l-1)
+    	if(i == length_-1)
     		i = 0;
     	else
     		i += 1;

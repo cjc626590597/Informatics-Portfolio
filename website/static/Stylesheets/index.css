@@ -3,22 +3,22 @@ body{
 }
 
 .form-container{
-
+    background_color: grey;
     margin:0 auto;
     width:1200px;
-
+    height:800px;
 }
 
 #img{
-    text-align: center;
-    position:relative;
-    top:100px;
+    position:absolute;
+    top:70px;
+    left:550px;
     z-index:1;
 }
 
 .words{
     font-size:16px;
-    position:relative;
+    position:absolute;
     z-index:10;
     font-family: "Lucida Console", "Courier New", monospace;
 }
@@ -30,36 +30,35 @@ body{
 }
 
 #factory_system{
-    top:-495px;
-    left:380px;
-}
-
-#price{
-    top:120px;
+    top:15px;
     left:500px;
 }
 
+#price{
+    top:510px;
+    left:650px;
+}
+
 #phone_OS{
-    top:-652px;
-    left:550px;
+    top:10px;
+    left:750px;
 }
 
 #phone_resolution{
-    top:-650px;
-    left:550px;
+    top:50px;
+    left:750px;
 }
 
 #phone_rear_camera{
-    top:-830px;
-    left:90px;
+    top:160px;
+    left:230px;
 }
 
 #PRC_line{
-    position:relative;
+    position:absolute;
     z-index:11;
-    display: block;
-    top:-972px;
-    left:365px;
+    top:150px;
+    left:510px;
 }
 
 #PRC_line img{
@@ -68,16 +67,15 @@ body{
 }
 
 #phone_battery_capacity{
-    top:-620px;
-    left:40px;
+    top:300px;
+    left:200px;
 }
 
 #PBC_line{
-    position:relative;
+    position:absolute;
     z-index:11;
-    display: block;
-    top:-852px;
-    left:356px;
+    top:290px;
+    left:510px;
 }
 
 #PBC_line img{
@@ -86,17 +84,16 @@ body{
 }
 
 #phone_screen{
-    top:-250px;
-    left:850px;
+    top:340px;
+    left:980px;
 }
 
 #PS_line{
     width:220px;
-    position:relative;
+    position:absolute;
     z-index:11;
-    display: block;
-    top:-895px;
-    left:675px;
+    top:330px;
+    left:800px;
 }
 
 #PS_line img{
@@ -105,17 +102,16 @@ body{
 }
 
 #phone_front_camera{
-    top:-889px;
-    left:850px;
+    top:105px;
+    left:985px;
 }
 
 #PFC_line{
     width:210px;
-    position:relative;
+    position:absolute;
     z-index:11;
-    display: block;
-    top:-1078px;
-    left:685px;
+    top:95px;
+    left:820px;
 }
 
 #PFC_line img{
@@ -124,28 +120,28 @@ body{
 }
 
 #phone_frequency{
-    top:-130px;
-    text-align: center;
+    top:550px;
+    left:610px;
 }
 
 #phone_kernel_num{
-    top:-120px;
-    text-align: center;
+    top:590px;
+    left:605px;
 }
 
 #phone_RAM_capacity{
-    top:-110px;
-    text-align: center;
+    top:630px;
+    left:560px;
 }
 
 #phone_ROM_capacity{
-    top:-100px;
-    text-align: center;
+    top:670px;
+    left:575px;
 }
 
 #submit{
-    top:-220px;
-    text-align: center;
+    top:705px;
+    left:700px;
 }
 
 #submit input[type="submit"]{
