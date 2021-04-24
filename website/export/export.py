@@ -1,6 +1,6 @@
 def exportJSON_LD(phones):
     # file = open("website/static/export/phones.json")
-    file = open("phones.jsonld", mode='w')
+    file = open("website/export/phones.jsonld", mode='w')
     for phone in phones:
         print("<script type=\"application/ld+json\">", file=file)
         print("{", file=file)
@@ -97,7 +97,7 @@ def exportJSON_LD(phones):
 
 def exportXML(phones):
     # file = open("website/static/export/phones.xml")
-    file = open("phones.xml", mode='w')
+    file = open("website/export/phones.xml", mode='w')
     for phone in phones:
         print("<div itemscope itemtype=\"https://schema.org/Product\">", file=file)
         print("\t<span itemprop=\"category\">mobilePhone</span>", file=file)
