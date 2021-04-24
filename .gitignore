@@ -9,3 +9,5 @@ website/.idea/
 venv
 *.xml
 *.xls
+*.pyc
+*.pyc
