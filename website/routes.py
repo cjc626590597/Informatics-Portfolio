@@ -67,7 +67,7 @@ def result():
             stringList.append(price[2])
     if request.method == 'POST':
         if 'HTML' in request.form:
-            exportXML(dataList)
+            exportHTML(dataList)
             return redirect(url_for('downloadHTML'))
         elif 'JSONLD' in request.form:
             exportJSON_LD(dataList)
