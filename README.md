@@ -95,6 +95,8 @@ Open http://127.0.0.1:5000/ in browser.
 
 ### 4. Choose phone parameters (This is GUI operate)
 
+*Use VPN to connect to Cardiff University MySQL Database.
+
 Open http://127.0.0.1:5000/ in browser.
 
 Choose phone parameters via drop down box and click 'Search' button.
