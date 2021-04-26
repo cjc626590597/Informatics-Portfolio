@@ -166,7 +166,6 @@ Informatics-Portfolio
         |-- templates
             |-- index.html
             |-- result.html
-            |-- text.html
 ```
 
 | File or directory name   | Description                                                  |
@@ -206,8 +205,6 @@ Informatics-Portfolio
 | index.html               | This is the search page                                      |
 | result.css               | This is the result page style                                |
 | result.html              | This is the result page                                      |
-
-
 
 
 
