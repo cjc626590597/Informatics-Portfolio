@@ -102,7 +102,7 @@ Open http://127.0.0.1:5000/ in browser.
 
 Choose phone parameters via drop down box and click 'Search' button.
 
-*After click the 'Search' button, you may need to wait for a very long time if there is not excel with training data in your local directory. Because the program will retrieve training data from database to create a excel file to speed up the next decision tree building process.
+*After click the 'Search' button, you may need to wait for a very long time if there is not excel with training data in your local directory. Because the program will retrieve training data from database to build the decision tree.
 
 
 
