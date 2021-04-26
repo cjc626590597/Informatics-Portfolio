@@ -1,32 +1,23 @@
 def exportJSON_LD(phones):
-    # file = open("website/static/export/phones.json")
     file = open("website/export/phones.jsonld", mode='w')
     for phone in phones:
         print("<script type=\"application/ld+json\">", file=file)
         print("{", file=file)
         print("\t\"@context\": \"https://schema.org\",", file=file)
-
         print("\t\"@type\": \"Product\",", file=file)
-
         print("\t\"category\": \"MobilePhone\",", file=file)
-
         print("\t\"name\": \"%s\"," % (phone[1]), file=file)
-
         print("\t\"offers\": {", file=file)
         print("\t\t\"@type\": \"Offer\",", file=file)
         print("\t\t\"price\": \"%.2f\"," % (phone[2]), file=file)
         print("\t\t\"priceCurrency\": \"CNY\"", file=file)
         print("\t},", file=file)
-
         print("\t\"size\": \"%.2f inch\"," % (phone[4]), file=file)
-
         print("\t\"image\": \"%s\"," % (phone[14]), file=file)
-
         print("\t\"brand\": {", file=file)
         print("\t\t\"@type\": \"Brand\",", file=file)
         print("\t\t\"name\": \"%s\"" % (phone[15]), file=file)
         print("\t},", file=file)
-
         print("\t\"additionalProperty\": [", file=file)
         print("\t\t{", file=file)
         print("\t\t\t\"@type\": \"PropertyValue\",", file=file)
@@ -95,9 +86,8 @@ def exportJSON_LD(phones):
     file.close()
 
 
-def exportXML(phones):
-    # file = open("website/static/export/phones.xml")
-    file = open("website/export/phones.xml", mode='w')
+def exportHTML(phones):
+    file = open("website/export/phones.html", mode='w')
     for phone in phones:
         print("<div itemscope itemtype=\"https://schema.org/Product\">", file=file)
         print("\t<span itemprop=\"category\">mobilePhone</span>", file=file)
@@ -162,13 +152,14 @@ def exportXML(phones):
         print("\t\t<span itemprop=\"value\">%s</span>" % (phone[16]), file=file)
         print("\t</div>", file=file)
         print("</div>", file=file)
+    file.close()
 
 
-phones = [[1, 'OPPO A32(8GB/128GB/ All Netcom )', 1499, 'Android', 6.5, 'Color', '720P', 1.8, 8, 8, 128, 5000, 13, 8,
-           'https://pro-fd.zol-img.com.cn/t_s300x300c5/g6/M00/02/01/ChMkKV9Z_KeIBXZUAAC-BeJRWEUAACIDwEB6AoAAL4d919.jpg',
-           'OPPO', 'Business'],
-          [1, 'Redmi 8A(3GB/32GB/ All Netcom )', 599, 'MIUI', 6.22, 'MIUI', '720P', 2, 8, 3, 32, 5000, 12, 8,
-           'https://pro-fd.zol-img.com.cn/t_s300x300c5/g1/M09/00/08/ChMljV2kSqWIUHBLAACcAbMG0LMAAP92QKihe4AAJwZ139.jpg',
-           'Redmi', 'Business']]
-exportJSON_LD(phones)
-exportXML(phones)
+# phones = [[1, 'OPPO A32(8GB/128GB/ All Netcom )', 1499, 'Android', 6.5, 'Color', '720P', 1.8, 8, 8, 128, 5000, 13, 8,
+#            'https://pro-fd.zol-img.com.cn/t_s300x300c5/g6/M00/02/01/ChMkKV9Z_KeIBXZUAAC-BeJRWEUAACIDwEB6AoAAL4d919.jpg',
+#            'OPPO', 'Business'],
+#           [1, 'Redmi 8A(3GB/32GB/ All Netcom )', 599, 'MIUI', 6.22, 'MIUI', '720P', 2, 8, 3, 32, 5000, 12, 8,
+#            'https://pro-fd.zol-img.com.cn/t_s300x300c5/g1/M09/00/08/ChMljV2kSqWIUHBLAACcAbMG0LMAAP92QKihe4AAJwZ139.jpg',
+#            'Redmi', 'Business']]
+# exportJSON_LD(phones)
+# exportHTML(phones)

@@ -105,7 +105,7 @@ Choose phone parameters via drop down box and click 'Search' button.
 
 ### 5. Export Structured Files (This is GUI operate)
 
-Click 'Export XML' button or 'Export JSON-LD' button to export structured file.
+Click 'Export HTML' button or 'Export JSON-LD' button to export structured file.
 
 Choose directory to save structured file in saving window.
 
@@ -139,7 +139,7 @@ Informatics-Portfolio
         |-- export
         |   |-- export.py
         |   |-- phones.jsonld
-        |   |-- phones.xml
+        |   |-- phones.html
         |-- scraping
         |   |-- dataCleaning.py
         |   |-- dataCleaning_range.py
@@ -187,7 +187,7 @@ Informatics-Portfolio
 | trainingData.xls         | This is used to build decision tree                          |
 | export (Directory)       | This directory includes python script for exporting structured files |
 | phones.jsonld            | JSON-LD file for phones                                      |
-| phones.xml               | XML file for phones                                          |
+| phones.html           | HTML file for phones                                       |
 | scraping (Directory)     | This directory includes python script for scraping data from website |
 | dataCleaning.py:         | This is used to clean the phone data  |
 | dataCleaning_range.py:   | This is used to further clean the phone data |

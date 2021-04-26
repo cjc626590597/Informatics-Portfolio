@@ -1,6 +1,6 @@
 from flask import render_template, url_for, request, redirect, flash, send_from_directory
 from website import app
-from website.export.export import exportXML, exportJSON_LD
+from website.export.export import exportHTML, exportJSON_LD
 from website.forms import IndexForm
 from website.functions import Search
 
@@ -66,9 +66,9 @@ def result():
         elif item.Phone_price <= 20000:
             stringList.append(price[2])
     if request.method == 'POST':
-        if 'XML' in request.form:
+        if 'HTML' in request.form:
             exportXML(dataList)
-            return redirect(url_for('downloadXML'))
+            return redirect(url_for('downloadHTML'))
         elif 'JSONLD' in request.form:
             exportJSON_LD(dataList)
             return redirect(url_for('downloadJSONLD'))
@@ -76,9 +76,9 @@ def result():
     return render_template('result.html', data=dataList, form=form, string=stringList)
 
 
-@app.route('/downloadXML', methods=['GET', 'POST'])
-def downloadXML():
-    return send_from_directory(app.root_path + '/export/', 'phones.xml', as_attachment=True)
+@app.route('/downloadHTML', methods=['GET', 'POST'])
+def downloadHTML():
+    return send_from_directory(app.root_path + '/export/', 'phones.html', as_attachment=True)
     pass
 
 
