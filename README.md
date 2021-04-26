@@ -69,6 +69,7 @@ If you want to clean the phone data, execute python script 'dataCleaning.py' and
 
 If you want to further clean the phone data to remove the characters not required, execute python script 'dataCleaning_range.py' and a new excel file named 'lastData.xls' is created.
 
+(Sometimes, for some unexpected data, you need to open the excel file and clean them manually) 
 
 
 ### 2. Upload Data (This is a command line operate)
