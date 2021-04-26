@@ -1,8 +1,28 @@
 import os
 from math import log
+from pathlib import Path
 import pandas as pd
+from website import db
 
-# from website.database.models import traingData
+
+class traingData(db.Model):
+    Phone_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    Phone_name = db.Column(db.String(200))
+    Phone_price = db.Column(db.FLOAT)
+    Phone_factory_system_kernel = db.Column(db.String(200))
+    Phone_screen_size = db.Column(db.FLOAT)
+    Phone_OS = db.Column(db.String(200))
+    Phone_resolution = db.Column(db.String(200))
+    Phone_frequency = db.Column(db.FLOAT)
+    Phone_kernel_num = db.Column(db.FLOAT)
+    Phone_RAM_capacity = db.Column(db.FLOAT)
+    Phone_ROM_capacity = db.Column(db.FLOAT)
+    Phone_battery_capacity = db.Column(db.FLOAT)
+    Phone_rear_camera = db.Column(db.FLOAT)
+    Phone_front_camera = db.Column(db.FLOAT)
+    Phone_pic_URL = db.Column(db.String(400))
+    Phone_brand = db.Column(db.String(400))
+    Phone_target_group = db.Column(db.String(400))
 
 
 class TreeNode():
@@ -29,38 +49,46 @@ def retrieveTrainingData():
     # file = r'data/trainingData.xls'
     print(os.getcwd())
     file = r'website/decisionTree/data/trainingData.xls'
-    data = pd.read_excel(file, sheet_name=0)
-    data.drop(data.columns[[0, -3]], axis=1, inplace=True)
-    data.fillna('', inplace=True)
-    features = list(data)
-    features.pop(-1)
-    data = data.values.tolist()
-    dataSet = []
-    for item in data:
-        dataSet.append(item)
-    return dataSet, features
+    my_file = Path("website/decisionTree/data/trainingData.xls")
+    if my_file.is_file():
+        data = pd.read_excel(file, sheet_name=0)
+        data.drop(data.columns[[0, -3]], axis=1, inplace=True)
+        data.fillna('', inplace=True)
+        features = list(data)
+        features.pop(-1)
+        data = data.values.tolist()
+        dataSet = []
+        for item in data:
+            dataSet.append(item)
+        return dataSet, features
+    else:
+        dataSet,feature=retrieveTrainingDataFromDatabase()
+        return dataSet,feature
 
 
-# def retrieveTrainingDataFromDatabase():
-#     col_names = traingData.__table__.columns.keys()  # This gets the column names
-#     sample_row = traingData.query.first()  # I just query for a random row
-#     required_values = {name: getattr(sample_row, name) for name in col_names}
-#     feature = (list(required_values.keys()))
-#     feature.pop(0)
-#     feature.pop(0)
-#     feature.pop()
-#     feature.pop(-2)
-#     dataDB = traingData.query
-#     dataList = []
-#     for index in range(0, dataDB.count()):
-#         item = []
-#         for j in range(0, len(feature)):
-#             if hasattr(dataDB[index], feature[j]):
-#                 item.append(getattr(dataDB[index], feature[j]))
-#             else:
-#                 continue
-#         dataList.append(item)
-#     return dataList, feature
+def retrieveTrainingDataFromDatabase():
+    print('app is reading data form database')
+    col_names = traingData.__table__.columns.keys()  # This gets the column names
+    sample_row = traingData.query.first()  # I just query for a random row
+    required_values = {name: getattr(sample_row, name) for name in col_names}
+    feature = (list(required_values.keys()))
+    print(feature)
+    feature.pop(0)
+    feature.pop(0)
+    feature.pop(-3)
+    print(feature)
+    dataDB = traingData.query
+    dataList = []
+    for index in range(0, dataDB.count()):
+        item = []
+        for j in range(0, len(feature)):
+            if hasattr(dataDB[index], feature[j]):
+                item.append(getattr(dataDB[index], feature[j]))
+            else:
+                continue
+        print(item)
+        dataList.append(item)
+    return dataList, feature
 
 
 def countLabels(dataSet):
